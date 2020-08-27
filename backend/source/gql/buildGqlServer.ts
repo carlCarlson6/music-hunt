@@ -3,9 +3,10 @@ import { ApolloServer } from 'apollo-server-express';
 import { AppContext } from '../common/types/AppContext';
 import { UserResolver } from './resolvers/UserResolver';
 import { AlbumResolver } from './resolvers/AlbumResolver';
+import {Express} from 'express';
 
 
-export const buildGqlServer = async (): Promise<ApolloServer> => {
+export const buildGqlServer = async (app: Express): Promise<ApolloServer> => {
     const schema = await buildSchema({
         resolvers: [
             UserResolver,
@@ -17,6 +18,7 @@ export const buildGqlServer = async (): Promise<ApolloServer> => {
         schema,
         context: ({req, res}): AppContext => ({req, res})
     })
-
+    server.applyMiddleware({app});
+    
     return server;
 }
