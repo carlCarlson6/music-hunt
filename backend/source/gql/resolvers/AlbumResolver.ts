@@ -1,9 +1,9 @@
 import { Query, Resolver, UseMiddleware, Arg, Mutation, Ctx } from "type-graphql";
 import { Album } from "../entities/Album";
-import { User } from "../entities/User";
-import { isAuth } from "../../middleware/isAuth";
+import { isAuth } from "../middleware/isAuth";
 import { AlbumInput } from "../inputTypes/AlbumInput";
-import { MyContext } from "../../../common/types/MyContext";
+import { AppContext } from "../../common/types/AppContext";
+import { findAlbumById } from "../../common/utils/findAlbumById";
 
 @Resolver()
 export class AlbumResolver {
@@ -24,7 +24,7 @@ export class AlbumResolver {
 
     @Mutation(()=>Album)
     @UseMiddleware(isAuth)
-    async addAlbum(@Arg('data') {title, url, genre}: AlbumInput, @Ctx() context: MyContext): Promise<Album> {
+    async addAlbum(@Arg('data') {title, url, genre}: AlbumInput, @Ctx() context: AppContext): Promise<Album> {
         const votes: number = 0;
         const createdAt: Date = new Date();
         const userId: string = context.req.session!.userId;
@@ -42,6 +42,14 @@ export class AlbumResolver {
             await Album.delete({id});
             return true;
         } catch(error) { throw new Error(error.message); }
+    }
+
+    @Mutation(()=>Album)
+    @UseMiddleware(isAuth)
+    async updateAlbum(@Arg('id') id: string, @Arg('data') albumData: AlbumInput): Promise<Album> {
+        const album: Album = await findAlbumById(id);
+
+        return album;
     }
 
 }

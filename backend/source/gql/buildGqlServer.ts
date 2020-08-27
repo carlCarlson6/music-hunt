@@ -1,6 +1,6 @@
 import { buildSchema } from 'type-graphql';
 import { ApolloServer } from 'apollo-server-express';
-import { MyContext } from '../../common/types/MyContext';
+import { AppContext } from '../common/types/AppContext';
 import { UserResolver } from './resolvers/UserResolver';
 import { AlbumResolver } from './resolvers/AlbumResolver';
 
@@ -15,7 +15,7 @@ export const buildGqlServer = async (): Promise<ApolloServer> => {
 
     const server = new ApolloServer({
         schema,
-        context: ({req, res}): MyContext => ({req, res})
+        context: ({req, res}): AppContext => ({req, res})
     })
 
     return server;
