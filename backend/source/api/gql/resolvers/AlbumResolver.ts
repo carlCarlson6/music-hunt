@@ -16,8 +16,7 @@ export class AlbumResolver {
 
     @Query(()=>[Album], {nullable:true})
     async albums(): Promise<Array<Album>> {
-        const albums: Array<Album> = await Album.find();
-        
+        const albums: Array<Album> = await Album.find();     
         if(albums.length === 0) return [];
 
         return albums;
@@ -34,6 +33,15 @@ export class AlbumResolver {
         await album.save();
 
         return album;
+    }
+
+    @Mutation(()=>Boolean)
+    @UseMiddleware(isAuth)
+    async deleteAlbum(@Arg('albumId') id: string): Promise<boolean> {
+        try {
+            await Album.delete({id});
+            return true;
+        } catch(error) { throw new Error(error.message); }
     }
 
 }
