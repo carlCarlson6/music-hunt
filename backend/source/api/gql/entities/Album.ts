@@ -1,13 +1,15 @@
+import { ObjectType, Field, ID, Int, GraphQLTimestamp, Root} from "type-graphql";
+import { User } from "./User";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
-import { ObjectType, Field, ID, Int } from "type-graphql";
+import { getAlbumByUser } from "../../../services/AlbumServices";
 
-@ObjectType()
 @Entity({name:"musichunt-ALBUM"})
-export class User extends BaseEntity {
+@ObjectType()
+export class Album extends BaseEntity {
 
     @Field(() => ID)
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Field()
     @Column()
@@ -24,5 +26,17 @@ export class User extends BaseEntity {
     @Field(() => Int)
     @Column()
     votes: number;
+
+    @Field(() => GraphQLTimestamp)
+    @Column()
+    createdAt: Date
+
+    @Column('uuid')
+    userId: string
+
+    @Field(() => User)
+    async user(@Root() album: Album): Promise<User> {
+        return await getAlbumByUser(album.userId);
+    }
 
 }

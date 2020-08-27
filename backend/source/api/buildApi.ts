@@ -6,8 +6,10 @@ import session from 'express-session';
 export const buildApi = (): Express => {
     const app = express();
 
-    app.use(cors({credentials:true, origin:'http://localhost:3000'}));
-    
+    app.use(cors({
+        credentials:true, 
+        origin:'http://localhost:3000'
+    }));
     app.use(session({
         name: "musichunt-cookie",
         secret: "SESSION_SECRET_COOKIE",

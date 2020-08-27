@@ -1,32 +1,35 @@
 import { Resolver, Mutation, Arg, Ctx, Query, UseMiddleware } from "type-graphql";
 import { User } from "../entities/User";
-import { UserInput } from "../entities/UserInput";
-import { hash, compare } from 'bcryptjs' 
+import { UserInput } from "../inputTypes/UserInput";
+import { hash } from 'bcryptjs' 
 import { MyContext } from "../../../common/types/MyContext";
-import { isAuth } from "../middleware/isAuth";
+import { isAuth } from "../../middleware/isAuth";
+import { validatePassword } from "../../../common/utils/validatePassword";
 
 @Resolver()
 export class UserResolver {
     
     @Mutation(() => User)
-    async register(@Arg('data') {email, password}: UserInput): Promise<User> {
+    async register(@Arg('data') {email, password}: UserInput, @Ctx() context: MyContext): Promise<User> {
         const hashedPassword = await hash(password, 10);
 
-        const user = User.create({ email, password: hashedPassword });
+        const user: User = User.create({ email, password: hashedPassword, createdAt: new Date() });
         await user.save();
+
+        context.req.session!.userId = user.id;
 
         return user;
     }
 
     @Mutation(() => User, {nullable: true})
     async login(@Arg('data') {email, password}: UserInput, @Ctx() context: MyContext): Promise<User | null> {
-        const user = await User.findOne({where: {email}});
+        const user = await User.findOne({where:{email}});
         if(!user) { return null }
 
-        const validPassword = await compare(password, user.password);
-        if(!validPassword) { return null }
+        await validatePassword(password, user.password);
 
         context.req.session!.userId = user.id;
+
         return user;
     }
 
