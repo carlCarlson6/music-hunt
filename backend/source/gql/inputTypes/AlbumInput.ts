@@ -4,19 +4,19 @@ import { InputType, Field, Int } from 'type-graphql';
 @InputType()
 export class AlbumInput {
 
-    @Field() 
+    @Field({nullable:true}) 
     @Length(6, undefined, {message: 'password must be 6 characters min'})
-    title?: string; 
+    title: string; 
 
-    @Field()
-    genre?: string;
+    @Field({nullable:true})
+    genre: string;
 
-    @Field()
+    @Field({nullable:true})
     @Length(1, undefined, {message: 'can not be empty'})
     @IsUrl(undefined, {message: 'must be a valid url'})
-    url?: string;
+    url: string;
 
-    @Field(() => Int, {defaultValue:0})
-    votes?: number;
+    @Field(() => Int, {defaultValue:0, nullable:true})
+    votes: number;
     
 }

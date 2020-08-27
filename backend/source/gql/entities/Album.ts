@@ -31,8 +31,8 @@ export class Album extends BaseEntity {
     @Column()
     createdAt: Date
 
-    @Field(() => GraphQLTimestamp)
-    @Column()
+    @Field(() => GraphQLTimestamp, {nullable:true})
+    @Column({nullable:true})
     updatedAt: Date
     
     @Column('uuid')

@@ -4,6 +4,8 @@ import { isAuth } from "../middleware/isAuth";
 import { AlbumInput } from "../inputTypes/AlbumInput";
 import { AppContext } from "../../common/types/AppContext";
 import { findAlbumById } from "../../common/utils/findAlbumById";
+import { isAllowed } from "../middleware/isAllowed";
+import { setAlbumToUpdate } from "../../common/utils/setAlbumDataToUpdate";
 
 @Resolver()
 export class AlbumResolver {
@@ -29,14 +31,14 @@ export class AlbumResolver {
         const createdAt: Date = new Date();
         const userId: string = context.req.session!.userId;
         
-        const album: Album = Album.create({title, genre, url, votes, createdAt, userId});
+        const album: Album = Album.create({title, genre, url, votes, userId, createdAt});
         await album.save();
 
         return album;
     }
 
     @Mutation(()=>Boolean)
-    @UseMiddleware(isAuth)
+    @UseMiddleware(isAuth, isAllowed)
     async deleteAlbum(@Arg('albumId') id: string): Promise<boolean> {
         try {
             await Album.delete({id});
@@ -45,10 +47,10 @@ export class AlbumResolver {
     }
 
     @Mutation(()=>Album)
-    @UseMiddleware(isAuth)
+    @UseMiddleware(isAuth, isAllowed)
     async updateAlbum(@Arg('id') id: string, @Arg('data') albumData: AlbumInput): Promise<Album> {
-        const album: Album = await findAlbumById(id);
-
+        const album: Album = await setAlbumToUpdate(id, albumData);
+        await Album.update(id, album);
         return album;
     }
 
