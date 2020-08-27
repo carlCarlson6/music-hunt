@@ -1,0 +1,15 @@
+{
+    "type": "postgres",
+    "host": "<host>",
+    "port": 5432,
+    "synchronize": true,
+    "logging": true,
+    "url": "<url>",
+    "entities": ["**/entities/**/*.*"],
+    "ssl": true,
+    "extra": {
+        "ssl": {
+            "rejectUnauthorized": false
+        }
+    }
+ }

@@ -1,0 +1,50 @@
+:root {
+    --grey1: #585858;
+    --grey2: #8f8f8f;
+    --grey3: #e1e1e1;
+    --mainColor: #f0cf63;
+
+    --font1: 'Ubuntu';
+    --font2: 'Alata';
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+} 
+
+body {
+    font-family: 'Ubuntu', serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    margin: 0 0 2rem 0;
+    line-height: 1.5;
+}
+h1, h2 {
+    font-family: 'Alata', serif;
+    font-weight: 700;
+}
+h3 {
+    font-family: 'Ubuntu', serif;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%
+}
