@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { ButtonLink } from '../styles/ButtonLink';
 import Link from 'next/link';
-import { IAdministration } from '../../common/models/IAdministration';
+import { IAdministration } from '../../common/models/components/IAdministration';
  
 const Administration: React.FC<IAdministration> = ({user}): JSX.Element => {
     return (

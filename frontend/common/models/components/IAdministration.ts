@@ -1,4 +1,4 @@
-import { IUser } from "./IUser";
+import { IUser } from "../entities/IUser";
 
 export interface IAdministration {
     user: IUser;

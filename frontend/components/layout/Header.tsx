@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { LogoWebSite } from '../styles/LogoWebSite';
 import Navigation from './Navigation';
 import Administration from './Administration';
-import { IUser } from '../../common/models/IUser';
+import { IUser } from '../../common/models/entities/IUser';
 import { AdministrationContainer } from '../styles/AdministrationContainer';
 import { HeaderStyled } from '../styles/header/HeaderStyled';
 import { HeaderContainer } from '../styles/header/HeaderContainer';
