@@ -55,7 +55,7 @@ const SignIn: React.FunctionComponent = (): JSX.Element => {
 
                 <InputSubmitForm 
                     type="submit"
-                >sign in</InputSubmitForm>
+                >create account</InputSubmitForm>
                 
             </Form>
         </Layout>

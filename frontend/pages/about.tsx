@@ -1,11 +1,20 @@
 import * as React from 'react';
 import Layout from '../components/layout/Layout';
+import { TitleAboutUs as TitleAboutUs } from '../components/styles/aboutUs/TitleAboutUs';
+import { ContainerAboutUs } from '../components/styles/aboutUs/ContainerAboutUs';
+import { ContentAboutUs } from '../components/styles/aboutUs/ContentAboutUs';
  
 const About: React.FunctionComponent = (): JSX.Element => {
     return (
         <Layout>
-            <h1>from about us</h1>
-            <p>from about us</p>
+            <ContainerAboutUs>
+
+                <TitleAboutUs>hello</TitleAboutUs>
+            
+                <ContentAboutUs></ContentAboutUs>
+
+
+            </ContainerAboutUs>
         </Layout>
     );
 }

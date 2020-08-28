@@ -17,6 +17,10 @@ export class Album extends BaseEntity {
 
     @Field()
     @Column()
+    artist: string;
+
+    @Field()
+    @Column()
     genre: string;
 
     @Field()
