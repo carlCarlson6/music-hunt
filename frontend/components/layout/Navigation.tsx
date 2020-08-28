@@ -7,10 +7,6 @@ const Navigation: React.FC = (): JSX.Element => {
         <Nav>
 
             <Link 
-                href="/"
-            ><a>Index</a></Link>
-
-            <Link 
                 href="/ranking"
             ><a>Ranking</a></Link>
 

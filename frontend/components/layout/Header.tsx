@@ -1,22 +1,34 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Link from 'next/link'
 import { Logo } from '../styles/Logo';
 import Navigation from './Navigation';
+import { HeaderStyled, HeaderContainer, HeaderControlContainer } from '../styles/HeaderStyles';
+import Administration from './Administration';
+import { IUser } from '../../common/models/IUser';
+import { AdministrationContainer } from '../styles/AdministrationContainer';
 
 const Header: React.FC = (): JSX.Element => {
+    let user: IUser;
+    // = {email:'test', id:'123'};
+
     return (
-        <Fragment>
-            <div>
-                <Link href='/'>
-                    <a><Logo src='static/img/logo.png'/></a>
-                </Link>
+        <HeaderStyled>
+            <HeaderContainer>
+                
+                <HeaderControlContainer>
+                    <Link href='/'>
+                        <a><Logo src='static/img/logo.png'/></a>
+                    </Link>
 
-                <Navigation />
+                    <Navigation />
+                </HeaderControlContainer>
 
-            </div>
+                <AdministrationContainer>
+                    <Administration user={user}/>
+                </AdministrationContainer>
 
-
-        </Fragment>
+            </HeaderContainer>
+        </HeaderStyled>
     );
 }
 
