@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link'
-import { Logo } from '../styles/Logo';
+import { LogoWebSite } from '../styles/LogoWebSite';
 import Navigation from './Navigation';
 import Administration from './Administration';
 import { IUser } from '../../common/models/IUser';
@@ -19,7 +19,7 @@ const Header: React.FC = (): JSX.Element => {
                 
                 <HeaderControlContainer>
                     <Link href='/'>
-                        <a><Logo src='static/img/logo.png'/></a>
+                        <a><LogoWebSite src='static/img/logo.png'/></a>
                     </Link>
 
                     <Navigation />

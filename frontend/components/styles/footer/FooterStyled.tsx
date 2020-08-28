@@ -6,4 +6,9 @@ export const FooterStyled = styled.footer`
     border-top: 2px solid var(--grey2);
     display: flex;
     align-items: center;
+
+    @media(min-width:768px) {
+        display: flex;
+        justify-content: space-between;
+    }
 `;
