@@ -9,23 +9,23 @@ const Administration: React.FC<IAdministration> = ({user}): JSX.Element => {
             { user? (
                 <Fragment>
                 
-                    <p>Hola: {user.email}</p>    
+                    <p>hello: {user.email}</p>    
             
                     <ButtonLink 
                         bgColor={true}
                         onClick={()=>console.log('logout')}
-                    >Logout</ButtonLink>
+                    >logout</ButtonLink>
     
                 </Fragment>       
             ) : (
                 <Fragment>
                 
                     <Link href="/login"><ButtonLink bgColor={true}>
-                        Login
+                        login
                     </ButtonLink></Link>
             
-                    <Link href="/new-account"><ButtonLink>
-                        Sign In
+                    <Link href="/sign-in"><ButtonLink>
+                        sign in
                     </ButtonLink></Link>
                     
                 </Fragment>

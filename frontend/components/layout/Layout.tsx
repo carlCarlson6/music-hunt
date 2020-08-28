@@ -6,7 +6,7 @@ import Header from './Header';
 const Layout: React.FC<ILayout> = (props): JSX.Element => (
     <Fragment>
         <Head>
-            <title>Music - Hunt</title>
+            <title>music-hunt</title>
 
             <link rel="stylesheet"  href="/static/css/layout.css" />
             <link rel="stylesheet"  href="/static/css/spinner.css"/>

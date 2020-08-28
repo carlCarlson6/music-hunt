@@ -8,15 +8,15 @@ const Navigation: React.FC = (): JSX.Element => {
 
             <Link 
                 href="/ranking"
-            ><a>Ranking</a></Link>
+            ><a>ranking</a></Link>
 
             <Link 
                 href="/new-album"
-            ><a>New Album</a></Link>
+            ><a>new album</a></Link>
 
             <Link 
                 href="/about"
-            ><a>About Us</a></Link>
+            ><a>about us</a></Link>
 
 
         </ Nav>

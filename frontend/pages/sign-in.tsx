@@ -5,10 +5,10 @@ import { Form } from '../components/styles/form/Form';
 import { Field } from '../components/styles/form/Field';
 import { InputSubmitForm } from '../components/styles/form/InputSubmitForm';
  
-const Login: React.FunctionComponent = (): JSX.Element => {
+const SignIn: React.FunctionComponent = (): JSX.Element => {
     return (
         <Layout>
-            <FormTitle>login</FormTitle>    
+            <FormTitle>sign in</FormTitle>    
 
             <Form
                 onSubmit={() => console.log('on submit form')}
@@ -23,10 +23,10 @@ const Login: React.FunctionComponent = (): JSX.Element => {
                         name={''}
                         value={''}
                         onChange={() => console.log('on change')}
-                        onBlur={() => console.log('on change')}
+                        onBlur={() => console.log('on blur')}
                     />
                 </Field>
-
+                
                 <Field>
                     <label>password</label>
                     <input 
@@ -36,18 +36,30 @@ const Login: React.FunctionComponent = (): JSX.Element => {
                         name={''}
                         value={''}
                         onChange={() => console.log('on change')}
-                        onBlur={() => console.log('on change')}
+                        onBlur={() => console.log('on blur')}
+                    />
+                </Field>
+                
+                <Field>
+                    <label>confirm password</label>
+                    <input 
+                        type="password"
+                        id="confirm-password"
+                        placeholder="repeat your password"
+                        name={''}
+                        value={''}
+                        onChange={() => console.log('on change')}
+                        onBlur={() => console.log('on blur')}
                     />
                 </Field>
 
                 <InputSubmitForm 
                     type="submit"
-                >login</InputSubmitForm>
+                >sign in</InputSubmitForm>
                 
             </Form>
-
         </Layout>
     );
 }
  
-export default Login;
+export default SignIn;
