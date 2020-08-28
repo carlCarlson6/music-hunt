@@ -8,19 +8,22 @@
     --font2: 'Alata';
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 html {
     font-size: 62.5%;
     box-sizing: border-box;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
-} 
+
 
 body {
     font-family: 'Ubuntu', serif;
     font-size: 1.6rem;
-    line-height: 1.5;
 }
 
 h1, h2, h3 {
