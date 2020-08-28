@@ -9,6 +9,7 @@ import { ContentContainer } from '../styles/ContentContainer';
 const Layout: React.FC<ILayout> = (props): JSX.Element => (
     <Fragment>
 
+        
         <Head>
             <title>music-hunt</title>
             <link rel="stylesheet"  href="/static/css/layout.css" />
@@ -22,15 +23,15 @@ const Layout: React.FC<ILayout> = (props): JSX.Element => (
             <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet" />
         </Head>
 
-
+        <MainContainer>
             <Header />
 
             <main>
                 {props.children}
             </main>
 
-
-            <Footer />
+        </MainContainer>
+        <Footer />
     </Fragment>
 );
 
