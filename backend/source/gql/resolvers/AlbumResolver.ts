@@ -32,10 +32,14 @@ export class AlbumResolver {
     async addAlbum(@Arg('data') {title, url, genre, artist}: AlbumInput, @Ctx() {userId}: AppContext): Promise<Album> {
         const votes: number = 0;
         const createdAt: Date = new Date();
+        console.log('hello');
         
         const album: Album = Album.create({title, artist, genre, url, votes, userId, createdAt});
+        console.log('world');
+        
         await album.save();
-
+        console.log('bye');
+        
         return album;
     }
 

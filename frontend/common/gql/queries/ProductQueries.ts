@@ -1,7 +1,7 @@
 import {gql} from '@apollo/client';
 
 export const albumQuery = gql`
-    query AlbumInfo(albumId: String!) {
+    query AlbumInfo($albumId: String!) {
         album(albumId: $albumId) {
             id
             title
@@ -10,6 +10,7 @@ export const albumQuery = gql`
             votes
             user {
                 id
+                email
             }
         }
     }
@@ -24,14 +25,15 @@ export const albumsQuery = gql`
             votes
             user {
                 id
+                email
             }
         }
     }
 `;
 
 export const addAlbumMutation = gql`
-    mutation AddAlbum($data: AlbumInput!) {
-        addAlbum(data: $data) {
+    mutation AddAlbum($title: String!, $artist: String!, $genre: String!, $url: String!) {
+        addAlbum(data: {title:$title, artist:$artist, genre:$genre, url:$url}) {
             id
             title
             genre
@@ -39,6 +41,7 @@ export const addAlbumMutation = gql`
             votes
             user {
                 id
+                email
             }
         }
     }
@@ -54,6 +57,7 @@ export const updateAlbumMutation = gql`
             votes
             user {
                 id
+                email
             }            
         }
     }

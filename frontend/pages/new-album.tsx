@@ -4,14 +4,35 @@ import { FormTitle } from '../components/styles/form/FormTitle';
 import { Form } from '../components/styles/form/Form';
 import { Field } from '../components/styles/form/Field';
 import { InputSubmitForm } from '../components/styles/form/InputSubmitForm';
+import { IAlbumController } from '../common/models/controllers/IAlbumController';
+import AlbumContext from '../context/album/AlbumContext';
+import { IFormController } from '../common/models/controllers/IFormController';
+import { newAlbumInitialState } from '../common/InitialStates';
+import { newAlbumValidations } from '../common/utils/validations/newAlbumValidations';
+import useForm from '../hooks/form/useForm';
+import { unpackNewAlbumFormValues } from '../common/utils/unpackValues/unpackNewAlbum';
+import Spinner from '../components/Spinner';
  
 const NewAlbum: React.FunctionComponent = (): JSX.Element => {
+    const {albumServices}: IAlbumController = React.useContext(AlbumContext)
+    const {handleBlur, handleChange, handleSubmit, values, submittedForm}: IFormController = useForm(newAlbumInitialState, newAlbumValidations, albumServices.addAlbum)
+
+    const {artist, genre, title, url} = unpackNewAlbumFormValues(values);
+
+    if(submittedForm) {
+        return (
+            <Layout>
+                <Spinner />
+            </Layout>
+        );
+    }
+
     return (
         <Layout>
             <FormTitle>new album</FormTitle>    
 
             <Form
-                onSubmit={() => console.log('on submit form')}
+                onSubmit={handleSubmit}
             >
                 
                 <Field>
@@ -20,10 +41,10 @@ const NewAlbum: React.FunctionComponent = (): JSX.Element => {
                         type="text"
                         id="title"
                         placeholder="album title"
-                        name={''}
-                        value={''}
-                        onChange={() => console.log('on change')}
-                        onBlur={() => console.log('on blur')}
+                        name={title.name}
+                        value={title.value}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                     />
                 </Field>
                 
@@ -33,10 +54,10 @@ const NewAlbum: React.FunctionComponent = (): JSX.Element => {
                         type="text"
                         id="artist"
                         placeholder="artist, band or composer"
-                        name={''}
-                        value={''}
-                        onChange={() => console.log('on change')}
-                        onBlur={() => console.log('on blur')}
+                        name={artist.name}
+                        value={artist.value}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                     />
                 </Field>
                 
@@ -46,10 +67,10 @@ const NewAlbum: React.FunctionComponent = (): JSX.Element => {
                         type="text"
                         id="genre"
                         placeholder="genre or musical style"
-                        name={''}
-                        value={''}
-                        onChange={() => console.log('on change')}
-                        onBlur={() => console.log('on blur')}
+                        name={genre.name}
+                        value={genre.value}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                     />
                 </Field>
 
@@ -59,10 +80,10 @@ const NewAlbum: React.FunctionComponent = (): JSX.Element => {
                         type="url"
                         id="genre"
                         placeholder="url to album content (i.e. youtube link)"
-                        name={''}
-                        value={''}
-                        onChange={() => console.log('on change')}
-                        onBlur={() => console.log('on blur')}
+                        name={url.name}
+                        value={url.value}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                     />
                 </Field>
                 

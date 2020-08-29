@@ -5,7 +5,7 @@ import { InputType, Field, Int } from 'type-graphql';
 export class AlbumInput {
 
     @Field({nullable:true}) 
-    @Length(6, undefined, {message: 'password must be 6 characters min'})
+    @Length(1, undefined, {message: 'album title can not be empty'})
     title: string; 
 
     @Field({nullable:true})

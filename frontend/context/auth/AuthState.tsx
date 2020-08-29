@@ -1,4 +1,3 @@
-import { IUser } from "../../common/models/entities/IUser";
 import React from 'react';
 import AuthContext from "./AuthContext";
 import authReducer from "./AuthReducer";
@@ -6,15 +5,10 @@ import { getLoginUserFn } from "../../services/user/LoginUser";
 import { getLogedUserFn } from "../../services/user/GetLogedUser";
 import { getLogoutUserFn } from "../../services/user/LogoutUser";
 import { getSignInUserFn } from "../../services/user/SignInUser";
-import { IAuthState } from "../../common/models/states/IAuthState";
+import { authInitialState } from '../../common/InitialStates';
 
 const AuthState = props => {
-    const initialState: IAuthState = { 
-        user: {id: null, email: null},
-        fetchingUser: false
-    }
-
-    const [state, dispatch] = React.useReducer(authReducer, initialState);
+    const [state, dispatch] = React.useReducer(authReducer, authInitialState);
 
     return (
         <AuthContext.Provider

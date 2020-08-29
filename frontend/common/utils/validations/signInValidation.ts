@@ -1,6 +1,6 @@
-import { IError } from "../common/models/entities/IError";
-import { IFormValue } from "../common/models/entities/IFormValue";
-import { unpackCreateAccountFormValues } from "../common/utils/unpackValues/unpackCreateAccount";
+import { IError } from "../../models/entities/IError";
+import { unpackCreateAccountFormValues } from "../unpackValues/unpackCreateAccount";
+import { IFormValue } from "../../models/entities/IFormValue";
 
 export const sigInValidation = (formValues: Array<IFormValue>): Array<IError> => {
     let errors: Array<IError> = []

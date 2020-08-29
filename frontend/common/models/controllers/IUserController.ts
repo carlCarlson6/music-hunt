@@ -1,5 +1,4 @@
-import { IUser } from "../entities/IUser";
-import { IUserServices } from "../../../services/user/IUserServices";
+import { IUserServices } from "../services/IUserServices";
 import { IAuthState } from "../states/IAuthState";
 
 export interface IUserController {

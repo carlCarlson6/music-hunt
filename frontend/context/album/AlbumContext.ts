@@ -3,4 +3,4 @@ import { IAlbumController } from '../../common/models/controllers/IAlbumControll
 
 const AlbumContext = React.createContext<IAlbumController>(null);
 
-export default AuthContext;
+export default AlbumContext;

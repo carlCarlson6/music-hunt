@@ -7,7 +7,7 @@ import { InputSubmitForm } from '../components/styles/form/InputSubmitForm';
 import { IFormController } from '../common/models/controllers/IFormController';
 import useForm from '../hooks/form/useForm';
 import { loginInitialState } from '../common/InitialStates';
-import { loginValidation } from '../validations/loginValidation';
+import { loginValidation } from '../common/utils/validations/loginValidation';
 import { unpackLoginFormValues } from '../common/utils/unpackValues/unpackLogin';
 import Spinner from '../components/Spinner';
 import AuthContext from '../context/auth/AuthContext';

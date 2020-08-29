@@ -8,8 +8,8 @@ import { authTokenStorega } from "../../common/utils/AuthTokenStorage";
 import { unpackCreateAccountFormValues } from "../../common/utils/unpackValues/unpackCreateAccount";
 
 export const getSignInUserFn = (dispatch: React.Dispatch<any>) => {
-    return async (loginInfo: Array<IFormValue>): Promise<void> => {
-        const {email, password} = unpackCreateAccountFormValues(loginInfo);
+    return async (signInInfo: Array<IFormValue>): Promise<void> => {
+        const {email, password} = unpackCreateAccountFormValues(signInInfo);
         dispatch({type:FETCH_USER});
         
         try {

@@ -9,7 +9,7 @@ import { IUserController } from '../common/models/controllers/IUserController';
 import useForm from '../hooks/form/useForm';
 import { sigIntInitialState } from '../common/InitialStates';
 import { IFormController } from '../common/models/controllers/IFormController';
-import { sigInValidation } from '../validations/signInValidation';
+import { sigInValidation } from '../common/utils/validations/signInValidation';
 import { unpackCreateAccountFormErrors, unpackCreateAccountFormValues } from '../common/utils/unpackValues/unpackCreateAccount';
  
 const SignIn: React.FunctionComponent = (): JSX.Element => {
@@ -35,7 +35,7 @@ const SignIn: React.FunctionComponent = (): JSX.Element => {
                         name={email.name}
                         value={email.value}
                         onChange={handleChange}
-                        onBlur={handleChange}
+                        onBlur={handleBlur}
                     />
                 </Field>
                 
@@ -48,7 +48,7 @@ const SignIn: React.FunctionComponent = (): JSX.Element => {
                         name={password.name}
                         value={password.value}
                         onChange={handleChange}
-                        onBlur={handleChange}
+                        onBlur={handleBlur}
                     />
                 </Field>
                 
@@ -61,7 +61,7 @@ const SignIn: React.FunctionComponent = (): JSX.Element => {
                         name={confimPassword.name}
                         value={confimPassword.value}
                         onChange={handleChange}
-                        onBlur={handleChange}
+                        onBlur={handleBlur}
                     />
                 </Field>
 
