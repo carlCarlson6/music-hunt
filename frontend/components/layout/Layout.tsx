@@ -7,7 +7,7 @@ import {MainContainer} from '../styles/MainContainer';
 import AuthContext from '../../context/auth/AuthContext';
  
 const Layout: React.FC<ILayout> = (props): JSX.Element => {
-    const {user, userServices} = React.useContext(AuthContext);
+    const {userServices} = React.useContext(AuthContext);
     useEffect(()=>{userServices.getUser()}, [])
 
     return (
@@ -28,9 +28,7 @@ const Layout: React.FC<ILayout> = (props): JSX.Element => {
 
             <MainContainer>
 
-                <Header 
-                    user={user}
-                />
+                <Header />
 
                 <main>
                     {props.children}

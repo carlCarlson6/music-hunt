@@ -9,7 +9,7 @@ export const getLogedUserFn = (dispatch: React.Dispatch<any>) => {
             const response = await apolloClient.query({
                 query: userQuery
             })
-           dispatch({type:GET_USER, payload: response.data.me})
+            dispatch({type:GET_USER, payload: response.data.me})
         } catch(error) {
             console.log(error)
         }

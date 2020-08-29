@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { ButtonLink } from '../styles/ButtonLink';
 import Link from 'next/link';
-import { IAdministration } from '../../common/models/components/IAdministration';
+import AuthContext from '../../context/auth/AuthContext';
  
-const Administration: React.FC<IAdministration> = ({user}): JSX.Element => {
+const Administration: React.FC = (): JSX.Element => {
+    const {user, userServices} = useContext(AuthContext);
+    
     return (
         <Fragment>
             { user.id? (
@@ -13,7 +15,7 @@ const Administration: React.FC<IAdministration> = ({user}): JSX.Element => {
             
                     <ButtonLink 
                         bgColor={true}
-                        onClick={()=>console.log('logout')}
+                        onClick={()=>userServices.logout()}
                     >logout</ButtonLink>
     
                 </Fragment>       

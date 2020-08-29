@@ -4,26 +4,28 @@ import { UserInput } from "../inputTypes/UserInput";
 import { hash } from 'bcryptjs' 
 import { AppContext } from "../../common/types/AppContext";
 import { isAuth } from "../middleware/isAuth";
-import { validatePassword } from "../../common/utils/auth/validatePassword";
+import { validatePassword } from "../../common/auth/validatePassword";
 import { logger } from "../middleware/logger";
 import { LoginUser } from "../entities/LoginUser";
-import { createAndSignJwt } from "../../common/utils/auth/createAndSignJwt";
+import { createAndSignJwt } from "../../common/auth/createAndSignJwt";
 
 @Resolver()
 export class UserResolver {
     
-    @Mutation(() => User)
+    @Mutation(() => LoginUser)
     @UseMiddleware(logger)
-    async register(@Arg('data') {email, password}: UserInput, @Ctx() context: AppContext): Promise<User> {
+    async register(@Arg('data') {email, password}: UserInput, @Ctx() context: AppContext): Promise<LoginUser> {
         const hashedPassword = await hash(password, 10);
 
         const user: User = User.create({ email, password: hashedPassword, createdAt: new Date() });
         await user.save();
 
-        return user;
+        const authToken: string = createAndSignJwt(user);
+
+        return {user, authToken};
     }
 
-    @Mutation(() => LoginUser, {nullable: true})
+    @Mutation(() => LoginUser)
     @UseMiddleware(logger)
     async login(@Arg('data') {email, password}: UserInput, @Ctx() context: AppContext): Promise<LoginUser | null> {
         const user = await User.findOne({where:{email}});
@@ -52,7 +54,7 @@ export class UserResolver {
     @Query(() => User, {nullable: true})
     @UseMiddleware(isAuth, logger)
     async me(@Ctx() context: AppContext): Promise<User | undefined> {
-        const user = await User.findOne(context.req.session!.userId);
+        const user = await User.findOne(context.userId);
         return user;
     }
 

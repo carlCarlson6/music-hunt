@@ -1,7 +1,7 @@
 import { MiddlewareFn } from "type-graphql";
 import { AppContext } from "../../common/types/AppContext";
-import { readAuthToken } from "../../common/utils/auth/readAuthToken";
-import { validateAuthToken } from "../../common/utils/auth/validateAuthToken";
+import { readAuthToken } from "../../common/auth/readAuthToken";
+import { validateAuthToken } from "../../common/auth/validateAuthToken";
 
 export const isAuth: MiddlewareFn<AppContext> = async ({ context }, next) => {
     const encryptedAuthToken: string = readAuthToken(context);

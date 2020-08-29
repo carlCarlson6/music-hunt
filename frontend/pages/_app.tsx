@@ -1,5 +1,4 @@
 import {AppProps} from 'next/app';
-import { MainContainer } from '../components/styles/MainContainer';
 import AuthState from '../context/auth/AuthState';
 
 
