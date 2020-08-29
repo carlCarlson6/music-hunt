@@ -6,10 +6,10 @@ import { IAdministration } from '../../common/models/components/IAdministration'
 const Administration: React.FC<IAdministration> = ({user}): JSX.Element => {
     return (
         <Fragment>
-            { user? (
+            { user.id? (
                 <Fragment>
                 
-                    <p>hello: {user.email}</p>    
+                    <p><span>welcome</span> {user.email}!</p>    
             
                     <ButtonLink 
                         bgColor={true}

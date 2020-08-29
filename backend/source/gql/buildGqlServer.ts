@@ -16,7 +16,7 @@ export const buildGqlServer = async (app: Express): Promise<ApolloServer> => {
 
     const server = new ApolloServer({
         schema,
-        context: ({req, res}): AppContext => ({req, res})
+        context: ({req, res}): AppContext => ({req, res, userId: ''})
     })
     server.applyMiddleware({app});
     

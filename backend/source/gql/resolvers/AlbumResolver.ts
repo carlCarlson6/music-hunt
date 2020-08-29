@@ -6,17 +6,20 @@ import { AppContext } from "../../common/types/AppContext";
 import { findAlbumById } from "../../common/utils/findAlbumById";
 import { isAllowed } from "../middleware/isAllowed";
 import { setAlbumToUpdate } from "../../common/utils/setAlbumDataToUpdate";
+import { logger } from "../middleware/logger";
 
 @Resolver()
 export class AlbumResolver {
     
     @Query(()=>Album, {nullable:true})
+    @UseMiddleware(logger)
     async album(@Arg('albumId') id: string): Promise<Album|undefined> {
         const album: Album|undefined = await Album.findOne(id);
         return album;
     }
 
     @Query(()=>[Album], {nullable:true})
+    @UseMiddleware(logger)
     async albums(): Promise<Array<Album>> {
         const albums: Array<Album> = await Album.find();     
         if(albums.length === 0) return [];
@@ -25,21 +28,21 @@ export class AlbumResolver {
     }
 
     @Mutation(()=>Album)
-    @UseMiddleware(isAuth)
-    async addAlbum(@Arg('data') {title, url, genre}: AlbumInput, @Ctx() context: AppContext): Promise<Album> {
+    @UseMiddleware(isAuth, logger)
+    async addAlbum(@Arg('data') {title, url, genre, artist}: AlbumInput, @Ctx() context: AppContext): Promise<Album> {
         const votes: number = 0;
         const createdAt: Date = new Date();
-        const userId: string = context.req.session!.userId;
+        const userId: string = context.userId;
         
-        const album: Album = Album.create({title, genre, url, votes, userId, createdAt});
+        const album: Album = Album.create({title, artist, genre, url, votes, userId, createdAt});
         await album.save();
 
         return album;
     }
 
     @Mutation(()=>Boolean)
-    @UseMiddleware(isAuth, isAllowed)
-    async deleteAlbum(@Arg('albumId') id: string): Promise<boolean> {
+    @UseMiddleware(isAuth, isAllowed, logger)
+    async deleteAlbum(@Arg('albumId') id: string, @Ctx() context: AppContext): Promise<boolean> {
         try {
             await Album.delete({id});
             return true;
@@ -47,8 +50,8 @@ export class AlbumResolver {
     }
 
     @Mutation(()=>Album)
-    @UseMiddleware(isAuth, isAllowed)
-    async updateAlbum(@Arg('id') id: string, @Arg('data') albumData: AlbumInput): Promise<Album> {
+    @UseMiddleware(isAuth, isAllowed, logger)
+    async updateAlbum(@Arg('id') id: string, @Arg('data') albumData: AlbumInput, @Ctx() context: AppContext): Promise<Album> {
         const album: Album = await setAlbumToUpdate(id, albumData);
         await Album.update(id, album);
         return album;

@@ -9,6 +9,9 @@ export class AlbumInput {
     title: string; 
 
     @Field({nullable:true})
+    artist: string;
+
+    @Field({nullable:true})
     genre: string;
 
     @Field({nullable:true})
@@ -17,6 +20,5 @@ export class AlbumInput {
     url: string;
 
     @Field(() => Int, {defaultValue:0, nullable:true})
-    votes: number;
-    
+    votes: number; 
 }

@@ -14,7 +14,6 @@ export const albumQuery = gql`
         }
     }
 `;
-
 export const albumsQuery = gql`
     query {
         albums {
@@ -46,7 +45,7 @@ export const addAlbumMutation = gql`
 `;
 
 export const updateAlbumMutation = gql`
-    mutation UpdateAlbum($id: string!, $data: AlbumInput!) {
+    mutation UpdateAlbum($id: String!, $data: AlbumInput!) {
         UpdateAlbum(id: $id, data: $data) {
             id
             title
@@ -61,7 +60,7 @@ export const updateAlbumMutation = gql`
 `;
 
 export const delteAlbumMutation = gql`
-    mutation DeleteAlbum($id: string!) {
+    mutation DeleteAlbum($id: String!) {
         deleteAlbum(albumId: $id)
     }
 `;

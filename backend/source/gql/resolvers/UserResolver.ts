@@ -4,36 +4,40 @@ import { UserInput } from "../inputTypes/UserInput";
 import { hash } from 'bcryptjs' 
 import { AppContext } from "../../common/types/AppContext";
 import { isAuth } from "../middleware/isAuth";
-import { validatePassword } from "../../common/utils/validatePassword";
+import { validatePassword } from "../../common/utils/auth/validatePassword";
+import { logger } from "../middleware/logger";
+import { LoginUser } from "../entities/LoginUser";
+import { createAndSignJwt } from "../../common/utils/auth/createAndSignJwt";
 
 @Resolver()
 export class UserResolver {
     
     @Mutation(() => User)
+    @UseMiddleware(logger)
     async register(@Arg('data') {email, password}: UserInput, @Ctx() context: AppContext): Promise<User> {
         const hashedPassword = await hash(password, 10);
 
         const user: User = User.create({ email, password: hashedPassword, createdAt: new Date() });
         await user.save();
 
-        context.req.session!.userId = user.id;
-
         return user;
     }
 
-    @Mutation(() => User, {nullable: true})
-    async login(@Arg('data') {email, password}: UserInput, @Ctx() context: AppContext): Promise<User | null> {
+    @Mutation(() => LoginUser, {nullable: true})
+    @UseMiddleware(logger)
+    async login(@Arg('data') {email, password}: UserInput, @Ctx() context: AppContext): Promise<LoginUser | null> {
         const user = await User.findOne({where:{email}});
         if(!user) { return null }
 
         await validatePassword(password, user.password);
 
-        context.req.session!.userId = user.id;
+        const authToken: string = createAndSignJwt(user);
 
-        return user;
+        return {user, authToken};
     }
 
     @Mutation(() => Boolean)
+    @UseMiddleware(logger)
     async logout(@Ctx() context: AppContext): Promise<Boolean> {
         return new Promise((resolve, reject) => context.req.session!.destroy((err) => {
             if(err){
@@ -46,7 +50,7 @@ export class UserResolver {
     }
 
     @Query(() => User, {nullable: true})
-    @UseMiddleware(isAuth)
+    @UseMiddleware(isAuth, logger)
     async me(@Ctx() context: AppContext): Promise<User | undefined> {
         const user = await User.findOne(context.req.session!.userId);
         return user;
