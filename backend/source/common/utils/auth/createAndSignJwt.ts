@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import { User } from '../../../gql/entities/User';
-import { json } from 'express';
 
 export const createAndSignJwt = (user: User): string => {
     const payload = {user: {id: user.id}};

@@ -2,7 +2,8 @@ import { IUser } from "../../common/models/entities/IUser";
 import React from 'react';
 import AuthContext from "./AuthContext";
 import authReducer from "./AuthReducer";
-import { UserServices } from "../../services/UserServices";
+import { getLoginUserFn } from "../../services/user/LoginUser";
+import { getLogedUserFn } from "../../services/user/GetLogedUser";
 
 const AuthState = props => {
     const initialState: IUser = { id: null, email: null }
@@ -16,7 +17,10 @@ const AuthState = props => {
                     id: state.id,
                     email: state.email
                 },
-                userServices: new UserServices(dispatch)
+                userServices: {
+                    login: getLoginUserFn(dispatch),
+                    getUser: getLogedUserFn(dispatch)
+                }
             }}
         >
             {props.children}

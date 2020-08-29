@@ -36,18 +36,18 @@ export class UserResolver {
         return {user, authToken};
     }
 
-    @Mutation(() => Boolean)
-    @UseMiddleware(logger)
-    async logout(@Ctx() context: AppContext): Promise<Boolean> {
-        return new Promise((resolve, reject) => context.req.session!.destroy((err) => {
-            if(err){
-                console.log(err);
-                return reject(false);
-            }
-            context.res.clearCookie('musichunt-cookie');
-            return resolve(true);
-        }));
-    }
+    //@UseMiddleware(logger)
+    //@Mutation(() => Boolean)
+    //async logout(@Ctx() context: AppContext): Promise<Boolean> {
+    //    return new Promise((resolve, reject) => context.req.session!.destroy((err) => {
+    //        if(err){
+    //            console.log(err);
+    //            return reject(false);
+    //        }
+    //        context.res.clearCookie('musichunt-cookie');
+    //        return resolve(true);
+    //    }));
+    //}
 
     @Query(() => User, {nullable: true})
     @UseMiddleware(isAuth, logger)

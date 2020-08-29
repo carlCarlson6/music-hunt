@@ -1,7 +1,7 @@
 import { IUser } from "../entities/IUser";
-import { UserServices } from "../../../services/UserServices";
+import { IUserServices } from "../../../services/user/IUserServices";
 
 export interface IUserController {
     user: IUser;
-    userServices: UserServices;
+    userServices: IUserServices;
 }

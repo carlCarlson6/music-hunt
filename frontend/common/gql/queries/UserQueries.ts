@@ -12,8 +12,8 @@ export const reqisterMutation = gql`
 export const loginMutation = gql`
     mutation LoginUser($email: String!, $password: String!) {
         login(data:{email:$email, password:$password}) {
-            id
-            email
+            authToken
+            user { id email }
         }
     }
 `;

@@ -1,10 +1,12 @@
 import {OK_LOGIN, KO_LOGIN, GET_USER, OK_SIGNUP, KO_SIGNUP, CLOSE_SESSION} from '../../common/types/AuthTypes';
+import { authTokenStorega } from '../../common/utils/AuthTokenStorage';
 
 const authReducer = (state, action) => {
     switch(action.type) {
         case OK_LOGIN:
-        case OK_SIGNUP:  
-            return { ...state, email: action.payload.email, id: action.payload.id};
+        case OK_SIGNUP:
+            authTokenStorega.AuthToken = action.payload.authToken;
+            return { ...state, email: action.payload.user.email, id: action.payload.user.id};
         
         case GET_USER:
             return { ...state, email: action.payload.email, id: action.payload.id }        

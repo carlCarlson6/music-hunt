@@ -7,6 +7,11 @@ export const FooterStyled = styled.footer`
     display: flex;
     align-items: center;
 
+    p {
+        color: var(--secondaryColor);
+        font-weight: 600;
+    }
+
     @media(min-width:768px) {
         display: flex;
         justify-content: space-between;

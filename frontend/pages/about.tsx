@@ -18,7 +18,7 @@ const About: React.FunctionComponent = (): JSX.Element => {
                     this website is built as a personal project for learning purposes
                 </p>
                 <p>
-                    the frontend uses nextjs and react, on the backend we have a graphql server with a postgresql database, all code is written with typescript
+                    the frontend uses nextjs and react, on the backend we have a graphql server with a postgresql database, all code is written in typescript
                 </p>
                 <p>
                     checkout the project repository <a href='https://github.com/carlCarlson6/music-hunt' target='_blank'> on github</a>
