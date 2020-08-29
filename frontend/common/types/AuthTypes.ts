@@ -4,3 +4,4 @@ export const GET_USER = "GET_USER";
 export const OK_SIGNUP = "OK_SIGNUP";
 export const KO_SIGNUP = "KO_SIGNUP";
 export const CLOSE_SESSION = "CLOSE_SESSION";
+export const FETCH_USER = "FETCH_USER";

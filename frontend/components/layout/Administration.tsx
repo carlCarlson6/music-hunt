@@ -2,9 +2,10 @@ import React, { Fragment, useContext } from 'react';
 import { ButtonLink } from '../styles/ButtonLink';
 import Link from 'next/link';
 import AuthContext from '../../context/auth/AuthContext';
+import Spinner from '../Spinner';
  
 const Administration: React.FC = (): JSX.Element => {
-    const {user, userServices} = useContext(AuthContext);
+    const {state:{user}, userServices} = useContext(AuthContext);
     
     return (
         <Fragment>
@@ -34,6 +35,7 @@ const Administration: React.FC = (): JSX.Element => {
             ) }
         </Fragment>
     );
+
 }
  
 export default Administration;

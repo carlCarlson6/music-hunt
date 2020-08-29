@@ -5,9 +5,10 @@ import Header from './Header';
 import Footer from './Footer';
 import {MainContainer} from '../styles/MainContainer';
 import AuthContext from '../../context/auth/AuthContext';
+import { authTokenStorega } from '../../common/utils/AuthTokenStorage';
  
 const Layout: React.FC<ILayout> = (props): JSX.Element => {
-    const {userServices} = React.useContext(AuthContext);
+    const {userServices, state} = React.useContext(AuthContext);
     useEffect(()=>{userServices.getUser()}, [])
 
     return (

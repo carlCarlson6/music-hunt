@@ -3,13 +3,14 @@ import React from 'react';
 import { unpackLoginFormValues } from "../../common/utils/unpackValues/unpackLogin";
 import { apolloClient } from "../../common/gql/Client";
 import { loginMutation } from "../../common/gql/queries/UserQueries";
-import { OK_LOGIN, KO_LOGIN } from "../../common/types/AuthTypes";
+import { OK_LOGIN, KO_LOGIN, FETCH_USER } from "../../common/types/AuthTypes";
 import Router from "next/router";
 import { authTokenStorega } from "../../common/utils/AuthTokenStorage";
 
 export const getLoginUserFn = (dispatch: React.Dispatch<any>) => {
     return async (loginInfo: Array<IFormValue>): Promise<void> => {
         const {email, password} = unpackLoginFormValues(loginInfo);
+        dispatch({type:FETCH_USER});
 
         try {
             const response = await apolloClient.mutate({

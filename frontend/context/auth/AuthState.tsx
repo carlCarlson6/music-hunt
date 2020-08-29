@@ -6,19 +6,20 @@ import { getLoginUserFn } from "../../services/user/LoginUser";
 import { getLogedUserFn } from "../../services/user/GetLogedUser";
 import { getLogoutUserFn } from "../../services/user/LogoutUser";
 import { getSignInUserFn } from "../../services/user/SignInUser";
+import { IAuthState } from "../../common/models/states/IAuthState";
 
 const AuthState = props => {
-    const initialState: IUser = { id: null, email: null }
+    const initialState: IAuthState = { 
+        user: {id: null, email: null},
+        fetchingUser: false
+    }
 
     const [state, dispatch] = React.useReducer(authReducer, initialState);
 
     return (
         <AuthContext.Provider
             value={{
-                user: {
-                    id: state.id,
-                    email: state.email
-                },
+                state,
                 userServices: {
                     login: getLoginUserFn(dispatch),
                     getUser: getLogedUserFn(dispatch),

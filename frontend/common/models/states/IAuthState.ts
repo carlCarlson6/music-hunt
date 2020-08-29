@@ -1,5 +1,6 @@
 import { IUser } from "../entities/IUser";
 
-export interface IHeader {
+export interface IAuthState {
     user: IUser;
+    fetchingUser: boolean;
 }

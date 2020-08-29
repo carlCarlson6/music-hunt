@@ -32,7 +32,7 @@ const NewAlbum: React.FunctionComponent = (): JSX.Element => {
                     <input 
                         type="text"
                         id="artist"
-                        placeholder="artist or composer"
+                        placeholder="artist, band or composer"
                         name={''}
                         value={''}
                         onChange={() => console.log('on change')}
@@ -45,7 +45,7 @@ const NewAlbum: React.FunctionComponent = (): JSX.Element => {
                     <input 
                         type="text"
                         id="genre"
-                        placeholder="album genre or musical style"
+                        placeholder="genre or musical style"
                         name={''}
                         value={''}
                         onChange={() => console.log('on change')}

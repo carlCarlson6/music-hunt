@@ -2,7 +2,7 @@ import { IFormValue } from "../../common/models/entities/IFormValue"
 import React from 'react';
 import { apolloClient } from "../../common/gql/Client";
 import { reqisterMutation } from "../../common/gql/queries/UserQueries";
-import { OK_SIGNUP, KO_SIGNUP } from "../../common/types/AuthTypes";
+import { OK_SIGNUP, KO_SIGNUP, FETCH_USER } from "../../common/types/AuthTypes";
 import Router from "next/router";
 import { authTokenStorega } from "../../common/utils/AuthTokenStorage";
 import { unpackCreateAccountFormValues } from "../../common/utils/unpackValues/unpackCreateAccount";
@@ -10,7 +10,8 @@ import { unpackCreateAccountFormValues } from "../../common/utils/unpackValues/u
 export const getSignInUserFn = (dispatch: React.Dispatch<any>) => {
     return async (loginInfo: Array<IFormValue>): Promise<void> => {
         const {email, password} = unpackCreateAccountFormValues(loginInfo);
-
+        dispatch({type:FETCH_USER});
+        
         try {
             const response = await apolloClient.mutate({
                 mutation: reqisterMutation,

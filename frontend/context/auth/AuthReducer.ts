@@ -1,18 +1,27 @@
-import {OK_LOGIN, KO_LOGIN, GET_USER, OK_SIGNUP, KO_SIGNUP, CLOSE_SESSION} from '../../common/types/AuthTypes';
+import {OK_LOGIN, KO_LOGIN, GET_USER, OK_SIGNUP, KO_SIGNUP, CLOSE_SESSION, FETCH_USER} from '../../common/types/AuthTypes';
 
 const authReducer = (state, action) => {
     switch(action.type) {
+        case FETCH_USER: 
+            return { ...state,
+                fetchingUser: true
+            }
+        
         case OK_LOGIN:
         case OK_SIGNUP:
-            return { ...state, email: action.payload.email, id: action.payload.id};
-        
         case GET_USER:
-            return { ...state, email: action.payload.email, id: action.payload.id }        
+            return { ...state, 
+                user:{email: action.payload.email, id: action.payload.id},
+                fetchingUser: false
+            };
         
         case CLOSE_SESSION:
         case KO_LOGIN:
         case KO_SIGNUP:
-            return { ...state, email: null, id: null}
+            return { ...state, 
+                user:{email: null, id: null},
+                fetchingUser: false
+            };
 
 
         default: return state;
