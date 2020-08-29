@@ -1,9 +1,9 @@
 import { IFormValue } from "./models/entities/IFormValue";
 
-export const createAccountInitialState: Array<IFormValue> = [
-    {name: 'name', value: ''},
+export const sigIntInitialState: Array<IFormValue> = [
     {name: 'email', value: ''},
     {name: 'password', value: ''},
+    {name: 'confimPassword', value: ''}
 ]
 
 export const loginInitialState: Array<IFormValue> = [
@@ -11,12 +11,6 @@ export const loginInitialState: Array<IFormValue> = [
     {name: 'password', value: ''},
 ]
 
-export const newProductInitialState: Array<IFormValue> = [
-    {name: 'name', value: ''},
-    {name: 'company', value: ''},
-    {name: 'url', value: ''},
-    {name: 'description', value: ''},
-]
 
 export const commnetInitialState: Array<IFormValue> = [
     {name: 'comment', value: ''},

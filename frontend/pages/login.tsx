@@ -8,18 +8,16 @@ import { IFormController } from '../common/models/controllers/IFormController';
 import useForm from '../hooks/form/useForm';
 import { loginInitialState } from '../common/InitialStates';
 import { loginValidation } from '../validations/loginValidation';
-import { unpackLoginFormValues, unpackLoginFormErrors } from '../common/utils/unpackValues/unpackLogin';
+import { unpackLoginFormValues } from '../common/utils/unpackValues/unpackLogin';
 import Spinner from '../components/Spinner';
 import AuthContext from '../context/auth/AuthContext';
-import { IUser } from '../common/models/entities/IUser';
 import { IUserController } from '../common/models/controllers/IUserController';
  
 const Login: React.FunctionComponent = (): JSX.Element => {
     const {userServices}: IUserController = useContext(AuthContext);
-    const {errors, handleBlur, handleChange, handleSubmit, values, submittedForm}: IFormController = useForm(loginInitialState, loginValidation, userServices.login)
+    const {handleBlur, handleChange, handleSubmit, values, submittedForm}: IFormController = useForm(loginInitialState, loginValidation, userServices.login)
 
     const {email, password} = unpackLoginFormValues(values);
-    //const {passwordError, emailError, formExecutionError} = unpackLoginFormErrors(errors);
     
     if(submittedForm) {
         return (

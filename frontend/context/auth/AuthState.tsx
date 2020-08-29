@@ -5,6 +5,7 @@ import authReducer from "./AuthReducer";
 import { getLoginUserFn } from "../../services/user/LoginUser";
 import { getLogedUserFn } from "../../services/user/GetLogedUser";
 import { getLogoutUserFn } from "../../services/user/LogoutUser";
+import { getSignInUserFn } from "../../services/user/SignInUser";
 
 const AuthState = props => {
     const initialState: IUser = { id: null, email: null }
@@ -21,7 +22,8 @@ const AuthState = props => {
                 userServices: {
                     login: getLoginUserFn(dispatch),
                     getUser: getLogedUserFn(dispatch),
-                    logout: getLogoutUserFn(dispatch)
+                    logout: getLogoutUserFn(dispatch),
+                    signIn: getSignInUserFn(dispatch)
                 }
             }}
         >

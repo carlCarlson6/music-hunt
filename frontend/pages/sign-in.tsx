@@ -4,14 +4,26 @@ import { FormTitle } from '../components/styles/form/FormTitle';
 import { Form } from '../components/styles/form/Form';
 import { Field } from '../components/styles/form/Field';
 import { InputSubmitForm } from '../components/styles/form/InputSubmitForm';
+import AuthContext from '../context/auth/AuthContext';
+import { IUserController } from '../common/models/controllers/IUserController';
+import useForm from '../hooks/form/useForm';
+import { sigIntInitialState } from '../common/InitialStates';
+import { IFormController } from '../common/models/controllers/IFormController';
+import { sigInValidation } from '../validations/signInValidation';
+import { unpackCreateAccountFormErrors, unpackCreateAccountFormValues } from '../common/utils/unpackValues/unpackCreateAccount';
  
 const SignIn: React.FunctionComponent = (): JSX.Element => {
+    const { userServices }: IUserController = React.useContext(AuthContext);
+    const {handleBlur, handleChange, handleSubmit, submittedForm, values}: IFormController = useForm(sigIntInitialState, sigInValidation, userServices.signIn)
+
+    const {email, password, confimPassword} = unpackCreateAccountFormValues(values);
+
     return (
         <Layout>
             <FormTitle>sign in</FormTitle>    
 
             <Form
-                onSubmit={() => console.log('on submit form')}
+                onSubmit={handleSubmit}
             >
                 
                 <Field>
@@ -20,10 +32,10 @@ const SignIn: React.FunctionComponent = (): JSX.Element => {
                         type="email"
                         id="email"
                         placeholder="your email"
-                        name={''}
-                        value={''}
-                        onChange={() => console.log('on change')}
-                        onBlur={() => console.log('on blur')}
+                        name={email.name}
+                        value={email.value}
+                        onChange={handleChange}
+                        onBlur={handleChange}
                     />
                 </Field>
                 
@@ -33,10 +45,10 @@ const SignIn: React.FunctionComponent = (): JSX.Element => {
                         type="password"
                         id="password"
                         placeholder="your password"
-                        name={''}
-                        value={''}
-                        onChange={() => console.log('on change')}
-                        onBlur={() => console.log('on blur')}
+                        name={password.name}
+                        value={password.value}
+                        onChange={handleChange}
+                        onBlur={handleChange}
                     />
                 </Field>
                 
@@ -46,10 +58,10 @@ const SignIn: React.FunctionComponent = (): JSX.Element => {
                         type="password"
                         id="confirm-password"
                         placeholder="repeat your password"
-                        name={''}
-                        value={''}
-                        onChange={() => console.log('on change')}
-                        onBlur={() => console.log('on blur')}
+                        name={confimPassword.name}
+                        value={confimPassword.value}
+                        onChange={handleChange}
+                        onBlur={handleChange}
                     />
                 </Field>
 

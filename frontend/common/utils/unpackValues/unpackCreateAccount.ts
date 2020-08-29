@@ -2,11 +2,11 @@ import { IFormValue } from "../../models/entities/IFormValue"
 import { IError } from "../../models/entities/IError"
 
 export const unpackCreateAccountFormValues = (formValues: Array<IFormValue>) => {
-    const name: IFormValue = formValues.find(formValue => formValue.name === 'name');
     const password: IFormValue = formValues.find(formValue => formValue.name === 'password');
     const email: IFormValue = formValues.find(formValue => formValue.name === 'email');
-    
-    return {name, password, email};
+    const confimPassword: IFormValue = formValues.find(formValue => formValue.name === 'confimPassword');
+
+    return {password, email, confimPassword};
 }
 
 export const unpackCreateAccountFormErrors = (errors: Array<IError>) => {
