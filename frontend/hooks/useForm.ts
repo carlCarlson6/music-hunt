@@ -3,8 +3,9 @@ import { IFormController } from '../common/models/controllers/IFormController';
 import { IFormValue } from '../common/models/entities/IFormValue';
 import { IError } from '../common/models/entities/IError';
 import { getHandleSubmit, getHandleChange, getHandleBlur } from './UseFormHandlers';
+import { IUser } from '../common/models/entities/IUser';
 
-const useForm = (initialState: Array<IFormValue>, validatationFn: (formValues: Array<IFormValue>) => Array<IError>, formExecutionFn: (formValues: Array<IFormValue>) => Promise<void>): IFormController => {
+const useForm = (initialState: Array<IFormValue>, validatationFn: (formValues: Array<IFormValue>) => Array<IError>, formExecutionFn: (formValues: Array<IFormValue>) => Promise<IUser>): IFormController => {
     const [values, setValues] = React.useState<Array<IFormValue>>(initialState);
     const [errors, setErrors] = React.useState<Array<IError>>([]);
     const [submittedForm, setSubmittedForm ] = React.useState(false);
