@@ -15,7 +15,7 @@ import { IUserController } from '../common/models/controllers/IUserController';
  
 const Login: React.FunctionComponent = (): JSX.Element => {
     const {userServices}: IUserController = useContext(AuthContext);
-    const {handleBlur, handleChange, handleSubmit, values, submittedForm}: IFormController = useForm(loginInitialState, loginValidation, userServices.login)
+    const {handleBlur, handleChange, handleSubmit, values, submittedForm}: IFormController = useForm(loginInitialState, loginValidation, userServices.login);
 
     const {email, password} = unpackLoginFormValues(values);
     

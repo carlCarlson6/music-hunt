@@ -3,7 +3,7 @@ import { IFormValue } from '../../common/models/entities/IFormValue';
 import { unpackNewAlbumFormValues } from '../../common/utils/unpackValues/unpackNewAlbum';
 import { ADD_ALBUM, OK_ADD, KO_ADD } from '../../common/types/AlbumTypes';
 import { apolloClient } from '../../common/gql/Client';
-import { addAlbumMutation } from '../../common/gql/queries/ProductQueries';
+import { addAlbumMutation } from '../../common/gql/queries/AlbumQueries';
 import Router from 'next/router';
 import { IAlbum } from '../../common/models/entities/IAlbum';
 

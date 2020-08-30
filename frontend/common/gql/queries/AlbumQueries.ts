@@ -5,6 +5,7 @@ export const albumQuery = gql`
         album(albumId: $albumId) {
             id
             title
+            artist
             genre
             url
             votes
@@ -20,6 +21,7 @@ export const albumsQuery = gql`
         albums {
             id
             title
+            artist
             genre
             url
             votes

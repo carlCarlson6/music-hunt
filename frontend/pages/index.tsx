@@ -3,6 +3,8 @@ import Layout from '../components/layout/Layout';
 import AlbumContext from '../context/album/AlbumContext';
 import { IAlbumController } from '../common/models/controllers/IAlbumController';
 import Spinner from '../components/Spinner';
+import AlbumDetail from '../components/layout/album/AlbumDetail';
+import { AlbumsListContainer } from '../components/styles/albums/AlbumsListContainer';
  
 const Home: React.FunctionComponent = (): JSX.Element => {
     const {state: {fetchingData, albums}, albumServices:{getAlbums}}: IAlbumController = React.useContext(AlbumContext);
@@ -19,8 +21,14 @@ const Home: React.FunctionComponent = (): JSX.Element => {
 
     return (
         <Layout>
-            <h1>from index</h1>
-            <p>from index</p>
+            <AlbumsListContainer>        
+                {albums.map(album =>
+                    <AlbumDetail
+                        album={album}
+                        key={album.id}
+                    />
+                )}
+            </AlbumsListContainer>
         </Layout>
     );
 }
