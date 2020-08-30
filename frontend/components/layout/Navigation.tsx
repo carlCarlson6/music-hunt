@@ -5,10 +5,13 @@ import { Nav } from '../styles/NavigationStyles';
 const Navigation: React.FC = (): JSX.Element => {
     return (
         <Nav>
+            <Link 
+                href="/"
+            ><a>index</a></Link>
 
             <Link 
                 href="/ranking"
-            ><a>ranking</a></Link>
+            ><a>top 5</a></Link>
 
             <Link 
                 href="/new-album"

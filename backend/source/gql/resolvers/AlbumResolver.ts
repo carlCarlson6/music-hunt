@@ -21,7 +21,7 @@ export class AlbumResolver {
     @Query(()=>[Album], {nullable:true})
     @UseMiddleware(logger)
     async albums(): Promise<Array<Album>> {
-        const albums: Array<Album> = await Album.find();     
+        const albums: Array<Album> = await Album.find({order: {createdAt:"DESC"}});     
         if(albums.length === 0) return [];
 
         return albums;

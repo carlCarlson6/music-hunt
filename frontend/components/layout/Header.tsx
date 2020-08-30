@@ -7,7 +7,6 @@ import { AdministrationContainer } from '../styles/AdministrationContainer';
 import { HeaderStyled } from '../styles/header/HeaderStyled';
 import { HeaderContainer } from '../styles/header/HeaderContainer';
 import { HeaderControlContainer } from '../styles/header/HeaderControlContainer';
-import { IHeader } from '../../common/models/components/IHeader';
 
 const Header: React.FC = (): JSX.Element => {
     
