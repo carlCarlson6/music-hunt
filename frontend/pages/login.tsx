@@ -5,7 +5,7 @@ import { Form } from '../components/styles/form/Form';
 import { Field } from '../components/styles/form/Field';
 import { InputSubmitForm } from '../components/styles/form/InputSubmitForm';
 import { IFormController } from '../common/models/controllers/IFormController';
-import useForm from '../hooks/form/useForm';
+import useForm from '../hooks/useForm';
 import { loginInitialState } from '../common/InitialStates';
 import { loginValidation } from '../common/utils/validations/loginValidation';
 import { unpackLoginFormValues } from '../common/utils/unpackValues/unpackLogin';

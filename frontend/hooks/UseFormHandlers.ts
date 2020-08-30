@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction, FormEvent } from "react";
-import { IFormValue } from "../../common/models/entities/IFormValue";
-import { IError } from "../../common/models/entities/IError";
+import { IFormValue } from "../common/models/entities/IFormValue";
+import { IError } from "../common/models/entities/IError";
 
 export const getHandleSubmit = (values: Array<IFormValue>, validate: (formValues: Array<IFormValue>) => Array<IError>, setErrors: Dispatch<SetStateAction<Array<IError>>>, setSubmitForm: Dispatch<SetStateAction<boolean>>): ((event: FormEvent<HTMLFormElement>) => void) => {
     return (event: FormEvent<HTMLFormElement>): void => {

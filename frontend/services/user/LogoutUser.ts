@@ -6,11 +6,11 @@ import Router from 'next/router';
 export const getLogoutUserFn = (dispatch: React.Dispatch<any>) => {
     return (): void => {
         try {
-            authTokenStorega.RemoveToken()
+            authTokenStorega.RemoveToken();
+            dispatch({type:CLOSE_SESSION})
+            Router.push('/login')
         } catch(error) {
             console.log(error)
         }
-        dispatch({type:CLOSE_SESSION})
-        Router.push('/login')
     }
 }

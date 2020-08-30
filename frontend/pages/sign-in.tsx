@@ -6,7 +6,7 @@ import { Field } from '../components/styles/form/Field';
 import { InputSubmitForm } from '../components/styles/form/InputSubmitForm';
 import AuthContext from '../context/auth/AuthContext';
 import { IUserController } from '../common/models/controllers/IUserController';
-import useForm from '../hooks/form/useForm';
+import useForm from '../hooks/useForm';
 import { sigIntInitialState } from '../common/InitialStates';
 import { IFormController } from '../common/models/controllers/IFormController';
 import { sigInValidation } from '../common/utils/validations/signInValidation';

@@ -9,7 +9,7 @@ import AlbumContext from '../context/album/AlbumContext';
 import { IFormController } from '../common/models/controllers/IFormController';
 import { newAlbumInitialState } from '../common/InitialStates';
 import { newAlbumValidations } from '../common/utils/validations/newAlbumValidations';
-import useForm from '../hooks/form/useForm';
+import useForm from '../hooks/useForm';
 import { unpackNewAlbumFormValues } from '../common/utils/unpackValues/unpackNewAlbum';
 import Spinner from '../components/Spinner';
  

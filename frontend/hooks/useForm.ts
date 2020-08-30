@@ -1,7 +1,7 @@
 import React from 'react';
-import { IFormController } from '../../common/models/controllers/IFormController';
-import { IFormValue } from '../../common/models/entities/IFormValue';
-import { IError } from '../../common/models/entities/IError';
+import { IFormController } from '../common/models/controllers/IFormController';
+import { IFormValue } from '../common/models/entities/IFormValue';
+import { IError } from '../common/models/entities/IError';
 import { getHandleSubmit, getHandleChange, getHandleBlur } from './UseFormHandlers';
 
 const useForm = (initialState: Array<IFormValue>, validatationFn: (formValues: Array<IFormValue>) => Array<IError>, formExecutionFn: (formValues: Array<IFormValue>) => Promise<void>): IFormController => {

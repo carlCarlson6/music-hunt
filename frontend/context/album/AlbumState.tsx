@@ -3,6 +3,7 @@ import albumReducer from "./AlbumReducer";
 import { albumInitialState } from "../../common/InitialStates";
 import AlbumContext from "./AlbumContext";
 import { getAddAlbumFn } from "../../services/album/AddAlbum";
+import { getAlbumsFn } from "../../services/album/GetAlbums";
 
 const AlbumState = props => {
     const [state, dispatch] = React.useReducer(albumReducer, albumInitialState);
@@ -12,7 +13,8 @@ const AlbumState = props => {
             value={{
                 state,
                 albumServices: {
-                    addAlbum: getAddAlbumFn(dispatch)
+                    addAlbum: getAddAlbumFn(dispatch),
+                    getAlbums: getAlbumsFn(dispatch)
                 }
             }}
         >

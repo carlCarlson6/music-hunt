@@ -1,15 +1,11 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment} from 'react';
 import Head from 'next/head';
 import { ILayout } from '../../common/models/components/ILayout';
 import Header from './Header';
 import Footer from './Footer';
 import {MainContainer} from '../styles/MainContainer';
-import AuthContext from '../../context/auth/AuthContext';
-import { authTokenStorega } from '../../common/utils/AuthTokenStorage';
  
 const Layout: React.FC<ILayout> = (props): JSX.Element => {
-    const {userServices, state} = React.useContext(AuthContext);
-    useEffect(()=>{userServices.getUser()}, [])
 
     return (
         <Fragment>

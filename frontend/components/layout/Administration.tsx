@@ -1,11 +1,11 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 import { ButtonLink } from '../styles/ButtonLink';
 import Link from 'next/link';
 import AuthContext from '../../context/auth/AuthContext';
-import Spinner from '../Spinner';
  
 const Administration: React.FC = (): JSX.Element => {
-    const {state:{user}, userServices} = useContext(AuthContext);
+    const {userServices, state:{user}} = React.useContext(AuthContext);
+    React.useEffect(()=>{userServices.getUser()}, []);
     
     return (
         <Fragment>
