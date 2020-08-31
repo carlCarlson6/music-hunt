@@ -2,7 +2,7 @@ import React from 'react';
 import { IAlbum } from '../../common/models/entities/IAlbum';
 import { apolloClient } from '../../common/gql/Client';
 import { albumsQuery } from '../../common/gql/queries/AlbumQueries';
-import { GET_ALBUMS, OK_ALBUMS } from '../../common/types/AlbumTypes';
+import { GET_ALBUMS, OK_ALBUMS, KO_ALBUMS } from '../../common/types/AlbumTypes';
 
 export const getAlbumsFn = (dispatch: React.Dispatch<any>) => {
     return async (): Promise<Array<IAlbum>> => {
@@ -16,7 +16,7 @@ export const getAlbumsFn = (dispatch: React.Dispatch<any>) => {
             return albums;
         } catch(error) {
             console.log(error.message)
-            dispatch({type:OK_ALBUMS})
+            dispatch({type:KO_ALBUMS})
         }
     }
 }

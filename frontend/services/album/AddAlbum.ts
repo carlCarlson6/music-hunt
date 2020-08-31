@@ -20,7 +20,7 @@ export const getAddAlbumFn = (dispatch: React.Dispatch<any>) => {
             const album: IAlbum = response.data.addAlbum;
             
             Router.push('/');
-            dispatch({type:OK_ADD, payload: album})
+            dispatch({type:OK_ADD})
             
             return album;      
         } catch(error) {

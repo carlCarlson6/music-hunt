@@ -37,14 +37,6 @@ export const addAlbumMutation = gql`
     mutation AddAlbum($title: String!, $artist: String!, $genre: String!, $url: String!) {
         addAlbum(data: {title:$title, artist:$artist, genre:$genre, url:$url}) {
             id
-            title
-            genre
-            url
-            votes
-            user {
-                id
-                email
-            }
         }
     }
 `;

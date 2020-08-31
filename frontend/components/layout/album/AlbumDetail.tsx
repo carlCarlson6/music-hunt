@@ -3,18 +3,24 @@ import { IAlbumDetails } from '../../../common/models/components/IAlbumDetails';
 import YoutubeVideo from './YoutubeVideo';
 import { AlbumDetailContainer } from '../../styles/albums/AlbumDetailContiner';
 import { AlbumDetailInfoContainer } from '../../styles/albums/AlbumDetailInfoContainer';
+import Link from 'next/link';
 
 
-const AlbumDetail: React.FC<IAlbumDetails> = ({album:{title, url, user, artist, genre, votes}}): JSX.Element => {
+const AlbumDetail: React.FC<IAlbumDetails> = ({album:{title, url, artist, votes, id}}): JSX.Element => {
     
     return (
         <Fragment>
             <AlbumDetailContainer>
     
                 <AlbumDetailInfoContainer>
-                    <h2>{title}</h2>
+                    <Link
+                        href='/albums/[albumId]'
+                        as={`/albums/${id}`}
+                    ><h2>{title}</h2></Link>
+                    
                     <h3>by: {artist}</h3>
                     <p>votes: {votes}</p>
+                
                 </AlbumDetailInfoContainer>
     
                 <YoutubeVideo url={url} />
