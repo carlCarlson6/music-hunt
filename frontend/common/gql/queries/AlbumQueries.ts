@@ -22,13 +22,8 @@ export const albumsQuery = gql`
             id
             title
             artist
-            genre
             url
             votes
-            user {
-                id
-                email
-            }
         }
     }
 `;

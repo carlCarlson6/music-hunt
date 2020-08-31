@@ -1,7 +1,7 @@
 import React from 'react';
-import { IYoutubeVideo } from '../../../common/models/components/IYoutubeVideo';
-import { YoutubeIFrame } from '../../styles/iframe/YoutubeIFrame';
-import { getYoutubeIdFromUrl } from '../../../common/utils/getYoutubeIdFromUrl';
+import { IYoutubeVideo } from '../../common/models/components/IYoutubeVideo';
+import { YoutubeIFrame } from '../styles/iframe/YoutubeIFrame';
+import { getYoutubeIdFromUrl } from '../../common/utils/getYoutubeIdFromUrl';
 
 const YoutubeVideo: React.FC<IYoutubeVideo> = ({url}) => {
     const youtubeId: string = getYoutubeIdFromUrl(url);

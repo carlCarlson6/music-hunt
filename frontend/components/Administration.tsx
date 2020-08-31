@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import { ButtonLink } from '../styles/ButtonLink';
+import { ButtonLink } from './styles/ButtonLink';
 import Link from 'next/link';
-import AuthContext from '../../context/auth/AuthContext';
+import AuthContext from '../context/auth/AuthContext';
  
 const Administration: React.FC = (): JSX.Element => {
     const {userServices, state:{user}} = React.useContext(AuthContext);

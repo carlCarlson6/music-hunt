@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Layout from '../components/layout/Layout';
+import Layout from '../components/Layout';
 import AlbumContext from '../context/album/AlbumContext';
 import { IAlbumController } from '../common/models/controllers/IAlbumController';
 import Spinner from '../components/Spinner';
-import AlbumDetail from '../components/layout/album/AlbumDetail';
+import AlbumDetail from '../components/album/AlbumDetail';
 import { AlbumsListContainer } from '../components/styles/albums/AlbumsListContainer';
  
 const Home: React.FunctionComponent = (): JSX.Element => {

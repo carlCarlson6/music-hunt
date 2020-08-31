@@ -15,6 +15,7 @@ export class AlbumResolver {
     @UseMiddleware(logger)
     async album(@Arg('albumId') id: string): Promise<Album|undefined> {
         const album: Album|undefined = await Album.findOne(id);
+        console.log(album);
         return album;
     }
 

@@ -1,9 +1,9 @@
-import React, { useContext, Fragment } from 'react';
+import React, { useContext } from 'react';
 import AlbumContext from '../../context/album/AlbumContext';
 import { IAlbumController } from '../../common/models/controllers/IAlbumController';
-import Layout from '../../components/layout/Layout';
 import Spinner from '../../components/Spinner';
 import { useRouter, NextRouter } from 'next/router';
+import Layout from '../../components/Layout';
 
 const Album: React.FC = () => {
     const [loadingInfo, setLoadingInfo] = React.useState<boolean>(true);
@@ -12,34 +12,35 @@ const Album: React.FC = () => {
     const {query: {albumId}}: NextRouter = useRouter();
     let idAlbum: string = Array.isArray(albumId)? albumId[0] : albumId;
 
-    React.useEffect(() => { (async () => {
-        if(albumId && fetchingData) {
+    React.useEffect(() => { const retriveAlbumInfo = async () => {
+        if(idAlbum && loadingInfo) {
             try {
-                await getAlbum(idAlbum);
+                const album = await getAlbum(idAlbum);
                 setLoadingInfo(false);
             } catch(error) {
                 console.log(error);
                 setLoadingInfo(false);
                 setError(true);
             }
-        }
-        })()
-    }, [albumId])
+        }}
+        retriveAlbumInfo();
+    }, [idAlbum])
 
 
     if(loadingInfo) {
         return (
-            <Fragment>
-                <Layout>
-                    <p>Cargando ...</p>
-                    <Spinner />
-                </Layout>
-            </Fragment>
+            <Layout>
+                <p>Cargando ...</p>
+                <Spinner />
+            </Layout>
         )
     };
 
     return (
-        <h1>desde el album</h1>
+        <Layout>
+            <p>desde el album</p>
+            <p>{artist}</p>
+        </Layout>
     );
 }
 

@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import { IAlbumDetails } from '../../../common/models/components/IAlbumDetails';
+import { IAlbumDetails } from '../../common/models/components/IAlbumDetails';
 import YoutubeVideo from './YoutubeVideo';
-import { AlbumDetailContainer } from '../../styles/albums/AlbumDetailContiner';
-import { AlbumDetailInfoContainer } from '../../styles/albums/AlbumDetailInfoContainer';
+import { AlbumDetailContainer } from '../styles/albums/AlbumDetailContiner';
+import { AlbumDetailInfoContainer } from '../styles/albums/AlbumDetailInfoContainer';
 import Link from 'next/link';
 
 
@@ -16,9 +16,9 @@ const AlbumDetail: React.FC<IAlbumDetails> = ({album:{title, url, artist, votes,
                     <Link
                         href='/albums/[albumId]'
                         as={`/albums/${id}`}
-                    ><h2>{title}</h2></Link>
+                    ><a><h2>{title}</h2></a></Link>
                     
-                    <h3>by: {artist}</h3>
+                    <a><h3>by: {artist}</h3></a>
                     <p>votes: {votes}</p>
                 
                 </AlbumDetailInfoContainer>

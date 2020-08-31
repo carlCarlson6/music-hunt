@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
 import Head from 'next/head';
-import { ILayout } from '../../common/models/components/ILayout';
+import { ILayout } from '../common/models/components/ILayout';
 import Header from './Header';
 import Footer from './Footer';
-import {MainContainer} from '../styles/MainContainer';
+import {MainContainer} from './styles/MainContainer';
  
 const Layout: React.FC<ILayout> = (props): JSX.Element => {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Nav } from '../styles/NavigationStyles';
+import { Nav } from './styles/NavigationStyles';
 
 const Navigation: React.FC = (): JSX.Element => {
     return (

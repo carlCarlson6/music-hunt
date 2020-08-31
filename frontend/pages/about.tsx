@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Layout from '../components/layout/Layout';
+import Layout from '../components/Layout';
 import { TitleAboutUs as TitleAboutUs } from '../components/styles/aboutUs/TitleAboutUs';
 import { ContentAboutUs } from '../components/styles/aboutUs/ContentAboutUs';
 import { ContainerAboutUs } from '../components/styles/aboutUs/ContainerAbout';

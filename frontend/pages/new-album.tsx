@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Layout from '../components/layout/Layout';
+import Layout from '../components/Layout';
 import { FormTitle } from '../components/styles/form/FormTitle';
 import { Form } from '../components/styles/form/Form';
 import { Field } from '../components/styles/form/Field';

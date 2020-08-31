@@ -1,8 +1,8 @@
 import React from 'react';
-import { FooterStyled } from '../styles/footer/FooterStyled';
-import { LogoGithub } from '../styles/footer/LogoGithub';
-import { LogoLinkedin } from '../styles/footer/LogoLinkedin';
-import { LogosContainer } from '../styles/footer/LogosContainer';
+import { FooterStyled } from './styles/footer/FooterStyled';
+import { LogoGithub } from './styles/footer/LogoGithub';
+import { LogoLinkedin } from './styles/footer/LogoLinkedin';
+import { LogosContainer } from './styles/footer/LogosContainer';
  
 const Footer: React.FC = (): JSX.Element => {
     return (
@@ -11,11 +11,11 @@ const Footer: React.FC = (): JSX.Element => {
             
             <LogosContainer>
                 <a href='https://github.com/carlCarlson6' target='_blank'>
-                    <LogoGithub src='static/img/GitHub-Logo.png' className='github-logo'></LogoGithub>
+                    <LogoGithub src='static/GitHub-Logo.png' className='github-logo'></LogoGithub>
                 </a>
                 
                 <a href='https://www.linkedin.com/in/carlos-acitores-deval-a3914a1b/' target='_blank'>
-                    <LogoLinkedin src='static/img/linkedinlogo.png' className='linkedin-logo'></LogoLinkedin>
+                    <LogoLinkedin src='static/linkedinlogo.png' className='linkedin-logo'></LogoLinkedin>
                 </a>
             </LogosContainer>
 
