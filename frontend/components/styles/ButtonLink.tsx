@@ -14,5 +14,7 @@ export const ButtonLink = styled.a<IButtonLink>`
 
     &:hover {
         cursor: pointer;
+        background-color: var(--secondaryColor);
+        color: var(--grey3);
     }
 `;

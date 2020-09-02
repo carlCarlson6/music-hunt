@@ -12,17 +12,17 @@ const AlbumDetail: React.FC<IAlbumDetails> = ({album:{title, url, artist, votes,
         <Fragment>
             <AlbumDetailContainer>
     
-                <AlbumDetailInfoContainer>
-                    <Link
-                        href='/albums/[albumId]'
-                        as={`/albums/${id}`}
-                    ><a><h2>{title}</h2></a></Link>
-                    
-                    <a><h3>by: {artist}</h3></a>
-                    <p>votes: {votes}</p>
-                
-                </AlbumDetailInfoContainer>
-    
+                <Link
+                    href='/albums/[albumId]'
+                    as={`/albums/${id}`}
+                >
+                    <AlbumDetailInfoContainer>
+                        <h2>{title}</h2>
+                        <h3>by: {artist}</h3>
+                        <p>votes: {votes}</p>
+                    </AlbumDetailInfoContainer>
+                </Link>
+
                 <YoutubeVideo url={url} />
                 
             </AlbumDetailContainer>

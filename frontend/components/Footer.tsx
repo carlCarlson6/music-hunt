@@ -11,11 +11,11 @@ const Footer: React.FC = (): JSX.Element => {
             
             <LogosContainer>
                 <a href='https://github.com/carlCarlson6' target='_blank'>
-                    <LogoGithub src='static/GitHub-Logo.png' className='github-logo'></LogoGithub>
+                    <LogoGithub src='/static/images/GitHub-Logo.png' className='github-logo' alt='github'></LogoGithub>
                 </a>
                 
                 <a href='https://www.linkedin.com/in/carlos-acitores-deval-a3914a1b/' target='_blank'>
-                    <LogoLinkedin src='static/linkedinlogo.png' className='linkedin-logo'></LogoLinkedin>
+                    <LogoLinkedin src='/static/images/linkedinlogo.png' className='linkedin-logo' alt='linkedin'></LogoLinkedin>
                 </a>
             </LogosContainer>
 

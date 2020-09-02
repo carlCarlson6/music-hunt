@@ -14,9 +14,10 @@ export const InputSubmitForm = styled.button`
     
     margin-left: 15rem;
 
-
     &:hover {
         cursor: pointer;
+        background-color: var(--secondaryColor);
+        color: var(--grey3);
     }
 
 `;

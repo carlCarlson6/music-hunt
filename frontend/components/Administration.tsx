@@ -5,7 +5,12 @@ import AuthContext from '../context/auth/AuthContext';
  
 const Administration: React.FC = (): JSX.Element => {
     const {userServices, state:{user}} = React.useContext(AuthContext);
-    React.useEffect(()=>{userServices.getUser()}, []);
+    React.useEffect(()=>{ 
+        const retrivieUser = async () => { 
+            await userServices.getUser()
+        }
+        retrivieUser();
+    }, []);
     
     return (
         <Fragment>

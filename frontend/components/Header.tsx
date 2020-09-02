@@ -16,7 +16,7 @@ const Header: React.FC = (): JSX.Element => {
                 
                 <HeaderControlContainer>
                     <Link href='/'>
-                        <a><LogoWebSite src='static/logo.png'/></a>
+                        <a><LogoWebSite src='/static/images/logo.png' alt='logo'/></a>
                     </Link>
 
                     <Navigation />

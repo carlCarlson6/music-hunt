@@ -3,7 +3,7 @@ import { Album } from "./Album";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { getAlbumsFromUser } from "../../common/utils/getAlbumsFromUser";
 
-@Entity({name:"musichunt-USER"})
+@Entity({name:"musichunt-dev-USER"})
 @ObjectType()
 export class User extends BaseEntity {
 
