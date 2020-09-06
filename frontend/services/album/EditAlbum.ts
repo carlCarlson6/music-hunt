@@ -4,28 +4,26 @@ import { apolloClient } from '../../common/gql/Client';
 import { updateAlbumMutation } from '../../common/gql/queries/AlbumQueries';
 import { IAlbum } from '../../common/models/entities/IAlbum';
 import { unpackAlbumValues } from '../../common/utils/unpackValues/unpackAlbumValues';
+import { EDIT_ALBUM, KO_EDIT, OK_EDIT } from '../../common/types/AlbumTypes';
 
 export const getEditAlbumFn = (dispatch: Dispatch<any>) => {
     return async (albumId:string, editALbumForm: Array<IFormValue>) => {
-        console.log('voting')
-
-        let albumInputData = unpackAlbumValues(editALbumForm);
-        console.log(albumInputData);
-
         try {
-
+            dispatch({type:EDIT_ALBUM});
+            const albumInputData = unpackAlbumValues(editALbumForm);
+        
             const response = await apolloClient.mutate({
                 mutation: updateAlbumMutation,
-                variables: {albumId, data: albumInputData }
+                variables: {id: albumId, data: albumInputData}
             });
-            let album: IAlbum;
+            const album: IAlbum = response.data.updateAlbum;
 
-            console.log(response);
+            dispatch({type:OK_EDIT, payload:album})
 
             return album;
-
         } catch(error) {
             console.log(error);
+            dispatch({type:KO_EDIT});
         }
     }
 }

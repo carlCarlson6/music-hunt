@@ -30,7 +30,7 @@ const Album: React.FC = () => {
         retriveAlbumInfo();
     }, [idAlbum]);
 
-    if(loadingInfo) {
+    if(loadingInfo || fetchingData) {
         return (
             <Layout>
                 <p>Cargando ...</p>

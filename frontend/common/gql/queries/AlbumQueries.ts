@@ -38,16 +38,17 @@ export const addAlbumMutation = gql`
 
 export const updateAlbumMutation = gql`
     mutation UpdateAlbum($id: String!, $data: AlbumInput!) {
-        UpdateAlbum(id: $id, data: $data) {
+        updateAlbum(id: $id, data: $data) {
             id
             title
+            artist
             genre
             url
             votes
             user {
                 id
                 email
-            }            
+            }           
         }
     }
 `;
