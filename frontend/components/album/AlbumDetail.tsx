@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import { IAlbumDetails } from '../../common/models/components/IAlbumDetails';
 import YoutubeVideo from './YoutubeVideo';
-import { AlbumDetailContainer } from '../styles/albums/AlbumDetailContiner';
-import { AlbumDetailInfoContainer } from '../styles/albums/AlbumDetailInfoContainer';
+import { AlbumDetailContainer, AlbumDetailInfoContainer } from '../styles/albums/AlbumDetailStyles';
 import Link from 'next/link';
 
 

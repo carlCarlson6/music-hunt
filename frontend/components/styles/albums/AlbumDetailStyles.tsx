@@ -1,10 +1,25 @@
 import styled from "@emotion/styled";
 
+export const AlbumDetailInfoContainer = styled.div`
+    max-width: 75%;
+    width: 30%;
+    margin-right: 0rem;
+
+    &:hover {
+        cursor: pointer;
+    
+        h2 {
+            color: var(--opositeColor);
+        }
+        h3 {
+            color: var(--mainColor);
+        }
+    }
+`;
+
 export const AlbumDetailContainer = styled.div`
-    width: 95%;
     border-bottom: 2px solid var(--grey3);
-    padding-top: 3.5rem;
-    padding-left: 2.5rem;
+    padding-top: 2rem;
     padding-bottom: 1rem;
     display: flex;
 

@@ -4,6 +4,10 @@ import { IAlbumController } from '../../common/models/controllers/IAlbumControll
 import Spinner from '../../components/Spinner';
 import { useRouter, NextRouter } from 'next/router';
 import Layout from '../../components/Layout';
+import { AlbumPageInfoContainer, AlbumVotes } from '../../components/styles/albums/AlbumPageStyles';
+import YoutubeVideo from '../../components/album/YoutubeVideo';
+import { Form } from '../../components/styles/form/Form';
+import { InputSubmitForm } from '../../components/styles/form/InputSubmitForm';
 
 const Album: React.FC = () => {
     const [loadingInfo, setLoadingInfo] = React.useState<boolean>(true);
@@ -38,8 +42,33 @@ const Album: React.FC = () => {
 
     return (
         <Layout>
-            <p>desde el album</p>
-            <p>{artist}</p>
+            <AlbumPageInfoContainer>
+                <div>
+                    <h1>{title}</h1>
+                    <h2>- {artist}</h2>
+                    <p>{genre}</p>
+                    <p>uploaded by: {user.email}</p>
+                    
+                    <AlbumVotes>
+                        
+                        <Form>
+                            <p>votes: {votes}</p>
+                            <InputSubmitForm
+                                onClick={() => console.log('upvote')}
+                            ><p>&#9650;</p></InputSubmitForm>
+                            <InputSubmitForm
+                                onClick={() => console.log('downvote')}
+                            ><p>&#9660;</p></InputSubmitForm>
+                        </Form>
+                    </AlbumVotes>
+                    
+                </div>
+                <div>
+                    <YoutubeVideo url={url} />
+                </div>
+
+            </AlbumPageInfoContainer>
+
         </Layout>
     );
 }
