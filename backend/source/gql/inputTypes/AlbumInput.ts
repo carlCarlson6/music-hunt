@@ -19,6 +19,6 @@ export class AlbumInput {
     @IsUrl(undefined, {message: 'must be a valid url'})
     url: string;
 
-    @Field(() => Int, {defaultValue:0, nullable:true})
+    @Field(() => Int, {nullable:true})
     votes: number; 
 }
