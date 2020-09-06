@@ -2,6 +2,7 @@ import { ObjectType, Field, ID, Int, GraphQLTimestamp, Root} from "type-graphql"
 import { User } from "./User";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { findUserById } from "../../common/utils/findUserById";
+import { Vote } from "./Vote";
 
 @Entity({name:"musichunt-dev-ALBUM"})
 @ObjectType()
@@ -45,6 +46,18 @@ export class Album extends BaseEntity {
     @Field(() => User)
     async user(@Root() album: Album): Promise<User> {
         return await findUserById(album.userId);
+    }
+
+    async voters(@Root() album: Album): Promise<Array<User>> {
+        const votes: Array<Vote> = await Vote.find({where: {userId: album.userId}});
+        let users: Array<User> = []; 
+        
+        votes.map(async vote => {
+            const user: User = await findUserById(vote.userId)
+            users.push(user);
+        });
+
+        return users;
     }
 
 }
