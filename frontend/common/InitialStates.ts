@@ -30,7 +30,7 @@ export const authInitialState: IAuthState = {
 }
 
 export const albumInitialState: IAlbumState = {
-    album: {id: null, title: null, url: null, artist: null, genre: null},
+    album: {id: null, title: null, url: null, artist: null, genre: null, user: null},
     albums: [],
     fetchingData: false
 }

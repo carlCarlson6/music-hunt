@@ -52,6 +52,11 @@ export const AlbumVotesContainer = styled.div`
                 vertical-align:middle;
             }
         }
+    
+        a {
+            margin-left: 0rem;
+        }
+    
     }
 `;
 
