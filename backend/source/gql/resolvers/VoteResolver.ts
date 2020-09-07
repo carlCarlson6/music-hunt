@@ -9,15 +9,9 @@ import { isVoteOperationAllowed } from "../middleware/isVoteOperationAllowed";
 @Resolver()
 export class VoteResolver {
     
-
-    @Query(() => [Vote], {nullable:true})
-    async votes(): Promise<Array<Vote>> {
-        return await Vote.find();
-    }
-
     @Mutation(() => Vote)
     @UseMiddleware(isAuth, logger)
-    async createVote(@Arg('data') {albumId, isPositive}: VoteInput, @Ctx() {userId}: AppContext): Promise<Vote> {
+    async createVote(@Arg('albumId') albumId: string, @Arg('isPositive') isPositive: boolean, @Ctx() {userId}: AppContext): Promise<Vote> {
         const createdAt: Date = new Date();
         const vote: Vote = Vote.create({albumId, isPositive, userId, createdAt})
         await vote.save();
@@ -27,7 +21,7 @@ export class VoteResolver {
 
     @Mutation(() => Vote)
     @UseMiddleware(isAuth, isVoteOperationAllowed, logger)
-    async updateVote(@Arg('voteId') voteId: string, @Arg('isPositive') isPositive: boolean, @Ctx() {userId}: AppContext): Promise<Vote> {
+    async updateVote(@Arg('voteId') voteId: string, @Arg('isPositive') isPositive: boolean): Promise<Vote> {
         const updatedAt: Date = new Date();
         await Vote.update(voteId, {updatedAt, isPositive});
 
@@ -37,10 +31,13 @@ export class VoteResolver {
         return vote;
     }
 
-    @Mutation(() => Vote)
+    @Mutation(() => Boolean)
     @UseMiddleware(isAuth, isVoteOperationAllowed, logger)
-    async deleteVote() {
-        
+    async deleteVote(@Arg('voteId') voteId: string): Promise<boolean> {
+        try {
+            await Vote.delete({id: voteId});
+            return true;
+        } catch(error) { throw new Error(error.message); }
     }
 
 }
