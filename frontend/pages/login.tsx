@@ -24,7 +24,6 @@ const Login: React.FunctionComponent = (): JSX.Element => {
     if(submittedForm) {
         return (
             <Layout>
-                <p>Iniciado sesion</p>
                 <Spinner />
             </Layout>
         );

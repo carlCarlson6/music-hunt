@@ -13,12 +13,21 @@ import { sigInValidation } from '../common/utils/validations/signInValidation';
 import { unpackCreateAccountFormErrors, unpackCreateAccountFormValues } from '../common/utils/unpackValues/unpackCreateAccount';
 import Link from 'next/link';
 import { ButtonLink } from '../components/styles/ButtonLink';
+import Spinner from '../components/Spinner';
  
 const SignIn: React.FunctionComponent = (): JSX.Element => {
     const { userServices }: IUserController = React.useContext(AuthContext);
     const {handleBlur, handleChange, handleSubmit, submittedForm, values}: IFormController = useForm(sigIntInitialState, sigInValidation, userServices.signIn)
 
     const {email, password, confimPassword} = unpackCreateAccountFormValues(values);
+
+    if(submittedForm) {
+        return (
+            <Layout>
+                <Spinner />
+            </Layout>
+        );
+    }
 
     return (
         <Layout>

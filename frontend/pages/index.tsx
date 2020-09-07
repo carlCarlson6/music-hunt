@@ -21,7 +21,9 @@ const Home: React.FunctionComponent = (): JSX.Element => {
 
     return (
         <Layout>
-            <AlbumsListContainer>        
+            <AlbumsListContainer
+                onGrid={true}
+            >        
                 {albums.map(album =>
                     <AlbumDetail
                         album={album}
