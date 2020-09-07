@@ -9,10 +9,10 @@ export const AlbumDetailInfoContainer = styled.div`
         cursor: pointer;
     
         h2 {
-            color: var(--opositeColor);
+            color: var(--mainOpositeColor);
         }
         h3 {
-            color: var(--mainColor);
+            color: var(--secondaryOpositeColor);
         }
     }
 `;

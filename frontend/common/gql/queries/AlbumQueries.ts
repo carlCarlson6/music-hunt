@@ -26,6 +26,12 @@ export const albumsQuery = gql`
             artist
             genre
             url
+            votes {
+                id
+                isPositive
+                user { id email }
+                album { id }
+            }
             user { id email }
         }
     }

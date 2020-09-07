@@ -3,6 +3,7 @@ import { IAlbumDetails } from '../../common/models/components/IAlbumDetails';
 import YoutubeVideo from './YoutubeVideo';
 import { AlbumDetailContainer, AlbumDetailInfoContainer } from '../styles/albums/AlbumDetailStyles';
 import Link from 'next/link';
+import { countTotalVotes } from '../../common/utils/CountTotalVotes';
 
 
 const AlbumDetail: React.FC<IAlbumDetails> = ({album:{title, url, artist, votes, id}}): JSX.Element => {
@@ -18,7 +19,7 @@ const AlbumDetail: React.FC<IAlbumDetails> = ({album:{title, url, artist, votes,
                     <AlbumDetailInfoContainer>
                         <h2>{title}</h2>
                         <h3>by: {artist}</h3>
-                        <p>votes: {votes}</p>
+                        <p>votes: {countTotalVotes(votes)}</p>
                     </AlbumDetailInfoContainer>
                 </Link>
 
