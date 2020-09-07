@@ -23,12 +23,36 @@ export const updateVoteMutation = gql`
     mutation UpdateVote($voteId: String!, $isPositive: Boolean!) {
         updateVote(voteId: $voteId, isPositive: $isPositive) {
             id
+            title
+            artist
+            genre
+            url
+            votes {
+                id
+                isPositive
+                user { id email }
+                album { id }
+            }
+            user { id email }
         }
     }
 `;
 
 export const deleteVoteMutation = gql`
     mutation DeleteVote($voteId: String!) {
-        deleteVote(voteId: $voteId)
+        deleteVote(voteId: $voteId) {
+            id
+            title
+            artist
+            genre
+            url
+            votes {
+                id
+                isPositive
+                user { id email }
+                album { id }
+            }
+            user { id email }
+        }
     }
 `;

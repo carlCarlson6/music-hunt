@@ -10,6 +10,7 @@ import { IUserController } from '../../common/models/controllers/IUserController
 import { setVoteButton } from '../../common/utils/setVoteButton';
 import { ButtonLink } from '../styles/ButtonLink';
 import Link from 'next/link';
+import VotingButton from './VotingButton';
 
 const Voting: React.FC = (): JSX.Element => {
     const {state:{album:{id, votes}, fetchingData}, albumServices:{voteAlbum}}: IAlbumController = useContext(AlbumContext);
@@ -18,8 +19,12 @@ const Voting: React.FC = (): JSX.Element => {
     if(fetchingData) {
         return (
             <Fragment>
-                <p>Loading ...</p>
-                <Spinner />
+                <AlbumVotesContainer>
+                    <Form>
+                        <p>Loading ...</p>
+                        <Spinner />
+                    </Form>
+                </AlbumVotesContainer>
             </Fragment>
         )
     }; 
@@ -31,21 +36,12 @@ const Voting: React.FC = (): JSX.Element => {
 
                 {user.id?
                     <Fragment>        
-                        <InputSubmitVote
-                            voted={setVoteButton(user, votes, true)}
-                            onClick={(event) => {
-                                event.preventDefault();
-                                voteAlbum(id, true);
-                            }}
-                        ><p>&#9650;</p></InputSubmitVote>
-
-                        <InputSubmitVote
-                            voted={setVoteButton(user, votes, false)}
-                            onClick={(event) => {
-                                event.preventDefault();
-                                voteAlbum(id, false);
-                            }}
-                        ><p>&#9660;</p></InputSubmitVote>
+                        <VotingButton
+                            positiveVotingButton={true}
+                        />
+                        <VotingButton
+                            positiveVotingButton={false}
+                        />
                     </Fragment>
                 : 
                     <Fragment>

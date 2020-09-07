@@ -8,6 +8,6 @@ export interface IAlbumServices {
     editAlbum: (albumId:string, editALbumForm: Array<IFormValue>) => Promise<IAlbum>
     voteAlbum: (albumId:string, isPositive: boolean) => Promise<IAlbum>
     editAlbumVote: (voteId:string, isPositive: boolean) => Promise<IAlbum>
-    deleteAlbumVote: (voteId: string) => Promise<boolean>
+    deleteAlbumVote: (voteId: string) => Promise<IAlbum>
     deleteAlbum: (albumId:string) => Promise<void>
 }

@@ -34,12 +34,18 @@ export class VoteResolver {
         return album;
     }
 
-    @Mutation(() => Boolean)
+    @Mutation(() => Album)
     @UseMiddleware(logger, isAuth, isVoteOperationAllowed)
-    async deleteVote(@Arg('voteId') voteId: string): Promise<boolean> {
+    async deleteVote(@Arg('voteId') voteId: string): Promise<Album> {
         try {
+            const vote: Vote|undefined = await Vote.findOne(voteId);
+            if(!vote) { throw new Error('problem when updating the vote') }
+            const albumId: string = vote.albumId
+
             await Vote.delete({id: voteId});
-            return true;
+            
+            const album: Album = await findAlbumById(albumId);
+            return album;
         } catch(error) { throw new Error(error.message); }
     }
 
