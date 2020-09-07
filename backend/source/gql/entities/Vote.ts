@@ -2,6 +2,8 @@ import { ObjectType, Field, ID, Int, GraphQLTimestamp, Root} from "type-graphql"
 import { User } from "./User";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { findUserById } from "../../common/utils/findUserById";
+import { Album } from "./Album";
+import { findAlbumById } from "../../common/utils/findAlbumById";
 
 @Entity({name:"musichunt-dev-VOTE"})
 @ObjectType()
@@ -21,15 +23,20 @@ export class Vote extends BaseEntity {
 
     @Column('uuid')
     userId: string
-
-    @Column()
-    albumId: string
-
     @Field(() => User)
     async user(@Root() vote: Vote): Promise<User> {
         return await findUserById(vote.userId);
     }
 
+    @Column()
+    albumId: string
+
+    @Field(() => Album)
+    async album(@Root() vote: Vote): Promise<Album> {
+        return await findAlbumById(vote.albumId);
+    }
+
+    
     @Field(() => Boolean, {nullable:true})
     @Column({nullable:true})
     isPositive: boolean
