@@ -4,6 +4,6 @@ import { IAlbum } from "./IAlbum";
 export interface IVote {
     id: string
     user: IUser
-    album: IAlbum
+    albumId: string
     isPositive: boolean
 } 

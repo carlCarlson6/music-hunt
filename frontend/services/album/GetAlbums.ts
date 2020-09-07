@@ -9,7 +9,7 @@ export const getAlbumsFn = (dispatch: React.Dispatch<any>) => {
         try {
             dispatch({type:GET_ALBUMS});
             const response = await apolloClient.query({query: albumsQuery});
-            
+
             const albums: Array<IAlbum> = response.data.albums;
             dispatch({type: OK_ALBUMS, payload: albums});
             

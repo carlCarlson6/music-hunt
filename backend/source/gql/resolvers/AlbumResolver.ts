@@ -28,7 +28,7 @@ export class AlbumResolver {
     }
 
     @Mutation(()=>Album)
-    @UseMiddleware(isAuth, logger)
+    @UseMiddleware(logger, isAuth)
     async addAlbum(@Arg('data') {title, url, genre, artist}: AlbumInput, @Ctx() {userId}: AppContext): Promise<Album> {
         const createdAt: Date = new Date();
         
@@ -39,7 +39,7 @@ export class AlbumResolver {
     }
 
     @Mutation(()=>Boolean)
-    @UseMiddleware(isAuth, isAlbumOperationAllowed, logger)
+    @UseMiddleware(logger, isAuth, isAlbumOperationAllowed)
     async deleteAlbum(@Arg('albumId') id: string): Promise<boolean> {
         try {
             await Album.delete({id});
@@ -48,7 +48,7 @@ export class AlbumResolver {
     }
 
     @Mutation(()=>Album)
-    @UseMiddleware(isAuth, isAlbumOperationAllowed, logger)
+    @UseMiddleware(logger, isAuth, isAlbumOperationAllowed)
     async updateAlbum(@Arg('id') id: string, @Arg('data') albumData: AlbumInput): Promise<Album> {
         const album: Album = await setAlbumToUpdate(id, albumData);
         await Album.update(id, album);

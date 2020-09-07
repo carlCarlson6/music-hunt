@@ -39,7 +39,7 @@ export class UserResolver {
     }
 
     @Query(() => User, {nullable: true})
-    @UseMiddleware(isAuth, logger)
+    @UseMiddleware(logger, isAuth)
     async me(@Ctx() context: AppContext): Promise<User | undefined> {
         const user = await User.findOne(context.userId);
         return user;

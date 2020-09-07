@@ -10,13 +10,11 @@ export const albumQuery = gql`
             url
             votes {
                 id
-                user {id}
                 isPositive
+                user { id email }
+                album { id }
             }
-            user {
-                id
-                email
-            }
+            user { id email }
         }
     }
 `;
@@ -26,8 +24,9 @@ export const albumsQuery = gql`
             id
             title
             artist
+            genre
             url
-            votes
+            user { id email }
         }
     }
 `;

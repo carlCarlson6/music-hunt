@@ -1,29 +1,34 @@
 import { gql } from "@apollo/client";
 
-export const CreateVote = gql`
+export const createVoteMutation = gql`
     mutation CreateVote($albumId: String!, $isPositive: Boolean!) {
         createVote(albumId: $albumId, isPositive:$isPositive) {
             id
-            user {id}
-            isPositive
-            album {id}
+            title
+            artist
+            genre
+            url
+            votes {
+                id
+                isPositive
+                user { id email }
+                album { id }
+            }
+            user { id email }
         }
     }
 `;
 
-export const UpdateVote = gql`
+export const updateVoteMutation = gql`
     mutation UpdateVote($voteId: String!, $isPositive: Boolean!) {
         updateVote(voteId: $voteId, isPositive: $isPositive) {
             id
-            user {id}
-            isPositive
-            album {id}
         }
     }
 `;
 
-export const DeleteVote = gql`
-    DeleteVote() {
-        deleteVote()
+export const deleteVoteMutation = gql`
+    mutation DeleteVote($voteId: String!) {
+        deleteVote(voteId: $voteId)
     }
 `;

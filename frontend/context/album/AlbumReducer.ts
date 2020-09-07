@@ -1,4 +1,4 @@
-import { ADD_ALBUM, OK_ADD, GET_ALBUMS, OK_ALBUMS, GET_ALBUM, OK_ALBUM, EDIT_ALBUM, OK_EDIT } from "../../common/types/AlbumTypes";
+import { ADD_ALBUM, OK_ADD, GET_ALBUMS, OK_ALBUMS, GET_ALBUM, OK_ALBUM, EDIT_ALBUM, OK_EDIT, KO_ADD, KO_EDIT, KO_ALBUM } from "../../common/types/AlbumTypes";
 
 const albumReducer = (state, action) => {
     switch(action.type) {
@@ -26,6 +26,13 @@ const albumReducer = (state, action) => {
                 album: action.payload
             }
 
+        case KO_ADD:
+        case KO_ALBUM:
+        case OK_ALBUMS:
+        case KO_EDIT:
+            return {...state,
+                fetchingData: false,
+            }
 
         default : return state
     }

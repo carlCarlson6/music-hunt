@@ -6,7 +6,7 @@ export interface IAlbum {
     title: string;
     genre: string;
     artist: string;
-    votes: Array<IVote>;
+    votes?: Array<IVote>;
     url: string;
     user: IUser;
 }

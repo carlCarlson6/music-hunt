@@ -8,7 +8,7 @@ import Spinner from '../Spinner';
 import { countTotalVotes } from '../../common/utils/CountTotalVotes';
 
 const Voting: React.FC = (): JSX.Element => {
-    const {state:{album:{id, votes}, fetchingData}, albumServices:{}}: IAlbumController = useContext(AlbumContext);
+    const {state:{album:{id, votes}, fetchingData}, albumServices:{voteAlbum}}: IAlbumController = useContext(AlbumContext);
     
     if(fetchingData) {
         return (
@@ -26,13 +26,13 @@ const Voting: React.FC = (): JSX.Element => {
                 <InputSubmitForm
                     onClick={(event) => {
                         event.preventDefault();
-                        console.log('upvoting');
+                        voteAlbum(id, true);
                     }}
                 ><p>&#9650;</p></InputSubmitForm>
                 <InputSubmitForm
                     onClick={(event) => {
                         event.preventDefault();
-                        console.log('upvoting');
+                        voteAlbum(id, false);
                     }}
                 ><p>&#9660;</p></InputSubmitForm>
             </Form>
