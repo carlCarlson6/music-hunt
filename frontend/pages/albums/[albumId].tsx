@@ -56,7 +56,6 @@ const Album: React.FC = (): JSX.Element => {
             </AlbumPageInfoContainer>
 
             <AlbumCommentsContainer>
-
             </AlbumCommentsContainer>
 
         </Layout>

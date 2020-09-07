@@ -1,6 +1,5 @@
 import { Resolver, Query, Mutation, Arg, UseMiddleware, Ctx } from "type-graphql";
 import { Vote } from "../entities/Vote";
-import { VoteInput } from "../inputTypes/VoteInput";
 import { isAuth } from "../middleware/isAuth";
 import { logger } from "../middleware/logger";
 import { AppContext } from "../../common/AppContext";
