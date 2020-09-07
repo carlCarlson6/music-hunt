@@ -28,10 +28,6 @@ export class Album extends BaseEntity {
     @Column()
     url: string;
 
-    @Field(() => Int)
-    @Column()
-    votes: number;
-
     @Field(() => GraphQLTimestamp)
     @Column()
     createdAt: Date
@@ -48,16 +44,9 @@ export class Album extends BaseEntity {
         return await findUserById(album.userId);
     }
 
-    async voters(@Root() album: Album): Promise<Array<User>> {
-        const votes: Array<Vote> = await Vote.find({where: {userId: album.userId}});
-        let users: Array<User> = []; 
-        
-        votes.map(async vote => {
-            const user: User = await findUserById(vote.userId)
-            users.push(user);
-        });
-
-        return users;
+    @Field(() => [Vote], {nullable:true})
+    async votes(@Root() album: Album): Promise<Array<Vote>> {
+        return await Vote.find({where: {albumId: album.id}});
     }
 
 }

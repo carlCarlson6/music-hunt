@@ -2,9 +2,8 @@ import { Query, Resolver, UseMiddleware, Arg, Mutation, Ctx } from "type-graphql
 import { Album } from "../entities/Album";
 import { isAuth } from "../middleware/isAuth";
 import { AlbumInput } from "../inputTypes/AlbumInput";
-import { AppContext } from "../../common/types/AppContext";
-import { findAlbumById } from "../../common/utils/findAlbumById";
-import { isAllowed } from "../middleware/isAllowed";
+import { AppContext } from "../../common/AppContext";
+import { isAlbumOperationAllowed } from "../middleware/isAlbumOperationAllowed";
 import { setAlbumToUpdate } from "../../common/utils/setAlbumDataToUpdate";
 import { logger } from "../middleware/logger";
 
@@ -31,21 +30,16 @@ export class AlbumResolver {
     @Mutation(()=>Album)
     @UseMiddleware(isAuth, logger)
     async addAlbum(@Arg('data') {title, url, genre, artist}: AlbumInput, @Ctx() {userId}: AppContext): Promise<Album> {
-        const votes: number = 0;
         const createdAt: Date = new Date();
-        console.log('hello');
         
-        const album: Album = Album.create({title, artist, genre, url, votes, userId, createdAt});
-        console.log('world');
-        
+        const album: Album = Album.create({title, artist, genre, url, userId, createdAt});       
         await album.save();
-        console.log('bye');
         
         return album;
     }
 
     @Mutation(()=>Boolean)
-    @UseMiddleware(isAuth, isAllowed, logger)
+    @UseMiddleware(isAuth, isAlbumOperationAllowed, logger)
     async deleteAlbum(@Arg('albumId') id: string): Promise<boolean> {
         try {
             await Album.delete({id});
@@ -54,7 +48,7 @@ export class AlbumResolver {
     }
 
     @Mutation(()=>Album)
-    @UseMiddleware(isAuth, isAllowed, logger)
+    @UseMiddleware(isAuth, isAlbumOperationAllowed, logger)
     async updateAlbum(@Arg('id') id: string, @Arg('data') albumData: AlbumInput): Promise<Album> {
         const album: Album = await setAlbumToUpdate(id, albumData);
         await Album.update(id, album);

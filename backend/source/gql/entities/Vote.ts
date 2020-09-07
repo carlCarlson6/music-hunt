@@ -22,6 +22,9 @@ export class Vote extends BaseEntity {
     @Column('uuid')
     userId: string
 
+    @Column()
+    albumId: string
+
     @Field(() => User)
     async user(@Root() vote: Vote): Promise<User> {
         return await findUserById(vote.userId);

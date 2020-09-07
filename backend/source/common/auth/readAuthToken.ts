@@ -1,4 +1,4 @@
-import { AppContext } from "../types/AppContext";
+import { AppContext } from "../AppContext";
 
 export const readAuthToken = (context: AppContext) => {
     const authToken = context.req.headers.authorization;

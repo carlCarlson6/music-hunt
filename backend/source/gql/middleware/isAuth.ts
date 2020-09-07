@@ -1,5 +1,5 @@
 import { MiddlewareFn } from "type-graphql";
-import { AppContext } from "../../common/types/AppContext";
+import { AppContext } from "../../common/AppContext";
 import { readAuthToken } from "../../common/auth/readAuthToken";
 import { validateAuthToken } from "../../common/auth/validateAuthToken";
 

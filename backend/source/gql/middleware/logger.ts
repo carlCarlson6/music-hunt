@@ -1,5 +1,5 @@
 import { MiddlewareFn } from "type-graphql";
-import { AppContext } from "../../common/types/AppContext";
+import { AppContext } from "../../common/AppContext";
 
 export const logger: MiddlewareFn<AppContext> = async ({ args, info }, next) => {
     console.log('new execution at: ', new Date());

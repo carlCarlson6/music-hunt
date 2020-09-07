@@ -2,7 +2,7 @@ import { Resolver, Mutation, Arg, Ctx, Query, UseMiddleware } from "type-graphql
 import { User } from "../entities/User";
 import { UserInput } from "../inputTypes/UserInput";
 import { hash } from 'bcryptjs' 
-import { AppContext } from "../../common/types/AppContext";
+import { AppContext } from "../../common/AppContext";
 import { isAuth } from "../middleware/isAuth";
 import { validatePassword } from "../../common/auth/validatePassword";
 import { logger } from "../middleware/logger";
