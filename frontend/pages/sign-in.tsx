@@ -11,6 +11,8 @@ import { sigIntInitialState } from '../common/InitialStates';
 import { IFormController } from '../common/models/controllers/IFormController';
 import { sigInValidation } from '../common/utils/validations/signInValidation';
 import { unpackCreateAccountFormErrors, unpackCreateAccountFormValues } from '../common/utils/unpackValues/unpackCreateAccount';
+import Link from 'next/link';
+import { ButtonLink } from '../components/styles/ButtonLink';
  
 const SignIn: React.FunctionComponent = (): JSX.Element => {
     const { userServices }: IUserController = React.useContext(AuthContext);
@@ -68,6 +70,8 @@ const SignIn: React.FunctionComponent = (): JSX.Element => {
                 <InputSubmitForm 
                     type="submit"
                 >create account</InputSubmitForm>
+
+                <Link href='/login'><ButtonLink>alredy have an account? login</ButtonLink></Link>
                 
             </Form>
         </Layout>
