@@ -1,7 +1,5 @@
-import { ObjectType, Field, ID, Int, GraphQLTimestamp, Root} from "type-graphql";
-import { User } from "./User";
+import { ObjectType, Field, ID, GraphQLTimestamp} from "type-graphql";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
-import { findUserById } from "../../common/utils/findUserById";
 
 @Entity({name:"musichunt-dev-COMMENT"})
 @ObjectType()
@@ -11,5 +9,16 @@ export class Comment extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    
+    @Field()
+    @Column()
+    text: string;
+
+    @Field(() => GraphQLTimestamp)
+    @Column()
+    createdAt: Date
+
+    @Column('uuid')
+    userId: string
+    @Column('uuid')
+    albumId: string
 }

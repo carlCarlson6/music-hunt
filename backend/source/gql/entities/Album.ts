@@ -3,6 +3,7 @@ import { User } from "./User";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { findUserById } from "../../common/utils/findUserById";
 import { Vote } from "./Vote";
+import { Comment } from "./Comment";
 
 @Entity({name:"musichunt-dev-ALBUM"})
 @ObjectType()
@@ -47,6 +48,11 @@ export class Album extends BaseEntity {
     @Field(() => [Vote], {nullable:true})
     async votes(@Root() album: Album): Promise<Array<Vote>> {
         return await Vote.find({where: {albumId: album.id}});
+    }
+
+    @Field(() => [Comment], {nullable: true})
+    async comments(@Root() album: Album): Promise<Array<Comment>> {
+        return await Comment.find({where: { albumId: album.id }})
     }
 
 }
