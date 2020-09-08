@@ -1,4 +1,4 @@
-https://musichunt-client.vercel.app/
+https://music-hunt-client.vercel.app/
 
 this website is built as a personal project for learning purposes
 
