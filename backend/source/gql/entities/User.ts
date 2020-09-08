@@ -28,8 +28,4 @@ export class User extends BaseEntity {
         return await getAlbumsFromUser(user.id);
     }
 
-    @Field(() => [Vote], {nullable:true})
-    async votes(@Root() user: User): Promise<Array<Vote>> {
-        return await Vote.find({where: {userId: user.id}});
-    }
 }
