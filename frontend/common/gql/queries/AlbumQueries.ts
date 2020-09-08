@@ -12,7 +12,6 @@ export const albumQuery = gql`
                 id
                 isPositive
                 user { id email }
-                album { id }
             }
             user { id email }
         }
@@ -30,7 +29,6 @@ export const albumsQuery = gql`
                 id
                 isPositive
                 user { id email }
-                album { id }
             }
             user { id email }
         }
@@ -48,16 +46,7 @@ export const addAlbumMutation = gql`
 export const updateAlbumMutation = gql`
     mutation UpdateAlbum($id: String!, $data: AlbumInput!) {
         updateAlbum(id: $id, data: $data) {
-            id
-            title
-            artist
-            genre
-            url
-            votes
-            user {
-                id
-                email
-            }           
+            id        
         }
     }
 `;

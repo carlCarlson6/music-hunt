@@ -3,7 +3,7 @@ import { useContext } from "react";
 import AuthContext from "../../context/auth/AuthContext";
 import { IAlbumController } from "../../common/models/controllers/IAlbumController";
 import AlbumContext from "../../context/album/AlbumContext";
-import { IVotingButton } from "../../common/models/entities/IVotingButton";
+import { IVotingButton } from "../../common/models/components/IVotingButton";
 import { InputSubmitVote } from "../styles/albums/AlbumPageStyles";
 import { setVoteButton } from "../../common/utils/setVoteButton";
 import { IVote } from "../../common/models/entities/IVote";
