@@ -3,6 +3,15 @@ import { InputType, Field, Int } from 'type-graphql';
 
 @InputType()
 export class CommentInput {
+    
+    @Field()
+    @Length(1)
+    text: string
 
+    @Field()
+    userId: string
+
+    @Field()
+    albumId: string
 
 }

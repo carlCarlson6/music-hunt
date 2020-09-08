@@ -5,9 +5,11 @@ import { Comment } from "../entities/Comment";
 
 @Resolver()
 export class CommentResolver {
+
     @Mutation(() => Comment)
     @UseMiddleware(logger, isAuth)
     async addComment(): Promise<Comment> {
-        
+
     }
+
 }
