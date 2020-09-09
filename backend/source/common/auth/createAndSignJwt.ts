@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { User } from '../../gql/entities/User';
-import { auth_token_secret, auth_token_expire_time } from '../../dev_env_vars';
+import { auth_token_secret, auth_token_expire_time } from '../../../env_vars';
 
 export const createAndSignJwt = (user: User): string => {
     const payload = {user: {id: user.id}};

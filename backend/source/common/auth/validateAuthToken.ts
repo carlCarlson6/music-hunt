@@ -1,5 +1,5 @@
 import {verify} from 'jsonwebtoken' 
-import { auth_token_secret } from '../../dev_env_vars';
+import { auth_token_secret } from '../../../env_vars';
 
 export const validateAuthToken = (authToken: string) => {
     try {

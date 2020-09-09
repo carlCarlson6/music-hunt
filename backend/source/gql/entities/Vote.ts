@@ -2,7 +2,7 @@ import { ObjectType, Field, ID, GraphQLTimestamp, Root} from "type-graphql";
 import { User } from "./User";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { findUserById } from "../../common/utils/findUserById";
-import { vote_table_name } from "../../dev_env_vars";
+import { vote_table_name } from "../../../env_vars";
 
 @Entity({name: vote_table_name})
 @ObjectType()

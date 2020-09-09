@@ -2,7 +2,7 @@ import { ObjectType, Field, ID, GraphQLTimestamp, Root} from "type-graphql";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { User } from "./User";
 import { findUserById } from "../../common/utils/findUserById";
-import { comment_table_name } from "../../dev_env_vars";
+import { comment_table_name } from "../../../env_vars";
 
 @Entity({name: comment_table_name})
 @ObjectType()

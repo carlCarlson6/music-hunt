@@ -4,7 +4,7 @@ import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { findUserById } from "../../common/utils/findUserById";
 import { Vote } from "./Vote";
 import { Comment } from "./Comment";
-import { album_table_name } from "../../dev_env_vars";
+import { album_table_name } from "../../../env_vars";
 
 @Entity({name: album_table_name})
 @ObjectType()

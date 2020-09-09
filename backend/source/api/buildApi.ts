@@ -1,6 +1,6 @@
 import express, {Express} from 'express';
 import cors from 'cors';
-import { cors_client_url } from '../dev_env_vars';
+import { cors_client_url } from '../../env_vars';
 
 
 export const buildApi = (): Express => {
