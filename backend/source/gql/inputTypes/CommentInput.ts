@@ -9,9 +9,6 @@ export class CommentInput {
     text: string
 
     @Field()
-    userId: string
-
-    @Field()
     albumId: string
 
 }

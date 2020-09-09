@@ -10,4 +10,5 @@ export interface IAlbumServices {
     editAlbumVote: (voteId:string, isPositive: boolean) => Promise<IAlbum>
     deleteAlbumVote: (voteId: string) => Promise<IAlbum>
     deleteAlbum: (albumId:string) => Promise<void>
+    addAlbumComment: (albumId: string, text: string) => Promise<IAlbum>
 }

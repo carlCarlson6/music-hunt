@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const addCommentMutation = gql`
-    mutation AddComment($userId: String!, albumId: String!, text: String!) {
-        addComment(data: {userId: $userId, albumId: $albumId, text: $text}) {
+    mutation AddComment(albumId: String!, text: String!) {
+        addComment(data: {albumId: $albumId, text: $text}) {
             id
             title
             artist
