@@ -14,6 +14,11 @@ export const albumQuery = gql`
                 user { id email }
             }
             user { id email }
+            comments {
+                id
+                text
+                user { id email }
+            }
         }
     }
 `;
@@ -31,6 +36,11 @@ export const albumsQuery = gql`
                 user { id email }
             }
             user { id email }
+            comments {
+                id
+                text
+                user { id email }
+            }
         }
     }
 `;

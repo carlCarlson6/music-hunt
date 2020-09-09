@@ -12,9 +12,13 @@ export const createVoteMutation = gql`
                 id
                 isPositive
                 user { id email }
-                album { id }
             }
             user { id email }
+            comments {
+                id
+                text
+                user { id email }
+            }
         }
     }
 `;
@@ -31,9 +35,13 @@ export const updateVoteMutation = gql`
                 id
                 isPositive
                 user { id email }
-                album { id }
             }
             user { id email }
+            comments {
+                id
+                text
+                user { id email }
+            }
         }
     }
 `;
@@ -50,9 +58,13 @@ export const deleteVoteMutation = gql`
                 id
                 isPositive
                 user { id email }
-                album { id }
             }
             user { id email }
+            comments {
+                id
+                text
+                user { id email }
+            }
         }
     }
 `;

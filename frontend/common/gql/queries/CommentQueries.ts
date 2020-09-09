@@ -12,9 +12,13 @@ export const addCommentMutation = gql`
                 id
                 isPositive
                 user { id email }
-                album { id }
             }
             user { id email }
+            comments {
+                id
+                text
+                user { id email }
+            }
         }
     }
 `;
