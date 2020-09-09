@@ -2,9 +2,9 @@ import { ObjectType, Field, ID, GraphQLTimestamp, Root } from "type-graphql";
 import { Album } from "./Album";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { getAlbumsFromUser } from "../../common/utils/getAlbumsFromUser";
-import { Vote } from "./Vote";
+import { user_table_name } from "../../dev_env_vars";
 
-@Entity({name:"musichunt-dev-USER"})
+@Entity({name: user_table_name})
 @ObjectType()
 export class User extends BaseEntity {
 

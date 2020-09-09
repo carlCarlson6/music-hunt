@@ -2,8 +2,9 @@ import { ObjectType, Field, ID, GraphQLTimestamp, Root} from "type-graphql";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { User } from "./User";
 import { findUserById } from "../../common/utils/findUserById";
+import { comment_table_name } from "../../dev_env_vars";
 
-@Entity({name:"musichunt-dev-COMMENT"})
+@Entity({name: comment_table_name})
 @ObjectType()
 export class Comment extends BaseEntity {
 

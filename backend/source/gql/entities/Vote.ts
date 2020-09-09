@@ -1,11 +1,10 @@
-import { ObjectType, Field, ID, Int, GraphQLTimestamp, Root} from "type-graphql";
+import { ObjectType, Field, ID, GraphQLTimestamp, Root} from "type-graphql";
 import { User } from "./User";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { findUserById } from "../../common/utils/findUserById";
-import { Album } from "./Album";
-import { findAlbumById } from "../../common/utils/findAlbumById";
+import { vote_table_name } from "../../dev_env_vars";
 
-@Entity({name:"musichunt-dev-VOTE"})
+@Entity({name: vote_table_name})
 @ObjectType()
 export class Vote extends BaseEntity {
 

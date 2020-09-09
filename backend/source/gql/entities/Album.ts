@@ -4,8 +4,9 @@ import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 import { findUserById } from "../../common/utils/findUserById";
 import { Vote } from "./Vote";
 import { Comment } from "./Comment";
+import { album_table_name } from "../../dev_env_vars";
 
-@Entity({name:"musichunt-dev-ALBUM"})
+@Entity({name: album_table_name})
 @ObjectType()
 export class Album extends BaseEntity {
 
